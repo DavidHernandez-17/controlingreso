@@ -107,6 +107,17 @@ class EmployeeController extends Controller
 
     }
 
+
+    public function confirmdelete($id)
+    {
+
+        $Employee = Employee::findOrfail($id);
+
+        return view('Employees.confirmdelete', [
+            'Employee' => $Employee
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -115,6 +126,11 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Employee = Employee::findOrfail($id);
+
+        $Employee->delete();
+
+        return redirect('/employees');
+
     }
 }

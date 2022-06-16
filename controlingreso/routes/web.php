@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ RegisterController::class, 'index']);
 
+//Employees
 Route::resource('/employees', EmployeeController::class);
+Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirmdelete'])->name('confirmdelete');
+
+
+//Register
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register/done', [RegisterController::class, 'register']);

@@ -20,7 +20,7 @@
                 </button>
                 <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page"><i class="fa-solid fa-id-card"></i> Registro</a>
+                        <a class="nav-link active" href="/register" ><i class="fa-solid fa-id-card"></i> Registro</a>
                         <a class="nav-link active" href="/employees" ><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                         <a class="nav-link active" ><i class="fa-solid fa-calendar-check"></i> Reportes</a>
                     </div>
