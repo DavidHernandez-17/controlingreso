@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,6 @@ Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirm
 //Register
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register/done', [RegisterController::class, 'register']);
+
+//Reports
+Route::get('/reports', [ReportController::class, 'index']);

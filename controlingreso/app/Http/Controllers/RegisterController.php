@@ -18,6 +18,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $identification = $request->get('register');
+        
         $Employee = Employee::Where('identification', $identification)->get();
 
         $date = Carbon::now();
