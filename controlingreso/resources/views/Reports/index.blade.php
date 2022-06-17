@@ -1,10 +1,11 @@
 @extends('Shared.base')
 
 @section('content')
+<div class="mt-4"></div>
 <div class="container">
-<h4 class="text-center"><i class="fa-solid fa-calendar-check mt-4 text-secondary"></i> Reporte registrado por usuario</h4>
-    <table id="tableregister" class="text-center cell-border">
+    <table id="tableregister" class="table table-striped text-center table-borderless cell-border">
         <thead>
+            <th colspan="12" class="text-center"><h5><i class="fa-solid fa-calendar-check mt-2 text-secondary"></i><strong> Reporte registrado por usuario</strong></h5></th>
             <tr>
                 <th class="text-center">Cédula</th>
                 <th class="text-center">Nombre completo</th>
