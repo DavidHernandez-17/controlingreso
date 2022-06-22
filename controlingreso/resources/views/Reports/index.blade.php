@@ -1,11 +1,16 @@
 @extends('Shared.base')
 
 @section('content')
-<div class="mt-4"></div>
+<div class="mt-2"></div>
+<div class="container">
+    <a class="btn btn-outline-success mt-3 mb-3" href="{{ route('export') }}"><i class="fa-solid fa-download"></i> Exportar</a>
+</div>
 <div class="container">
     <table id="tableregister" class="table table-striped text-center table-borderless cell-border">
         <thead>
-            <th colspan="12" class="text-center"><h5><i class="fa-solid fa-calendar-check mt-2 text-secondary"></i><strong> Reporte registrado por usuario</strong></h5></th>
+            <th colspan="12" class="text-center">
+                <h5><i class="fa-solid fa-calendar-check mt-2 text-secondary"></i><strong> Reporte registrado por usuario</strong></h5>
+            </th>
             <tr>
                 <th class="text-center">Cédula</th>
                 <th class="text-center">Nombre completo</th>
@@ -15,27 +20,27 @@
             </tr>
         </thead>
 
-    <tbody>
-        @foreach( $Reports as $Report )
-        <tr>
-            <td> {{ $Report->identification }} </td>
-            <td> {{ $Report->fullname }} </td>
-            <td> {{ $Report->area }} </td>
-            <td> {{ $Report->site }} </td>
-            <td> {{ $Report->created_at }} </td>
-        </tr>
-        @endforeach
-    </tbody>
+        <tbody>
+            @foreach( $Reports as $Report )
+            <tr>
+                <td> {{ $Report->identification }} </td>
+                <td> {{ $Report->fullname }} </td>
+                <td> {{ $Report->area }} </td>
+                <td> {{ $Report->site }} </td>
+                <td> {{ $Report->created_at }} </td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
-</div>  
+</div>
 
 <script>
     $(document).ready(function() {
-    $('#tableregister').DataTable({
-    "language": {
-      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-    }
-     });
+        $('#tableregister').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
     });
 </script>
 

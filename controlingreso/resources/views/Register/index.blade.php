@@ -13,7 +13,7 @@
     <form action="/register/done" method="POST" class="container">
         @csrf
         <div>
-            <input type="number" name="register" id="register" class="form-control text-center" autofocus>
+            <input type="text" name="register" id="register" class="form-control text-center" autofocus>
         </div>
 
         <button type="submit" class="btn btn-outline-success mt-3"><i class="fa-regular fa-circle-check"></i> Registrar</button>

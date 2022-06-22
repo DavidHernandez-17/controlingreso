@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\EmployeeImport;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
@@ -133,4 +135,30 @@ class EmployeeController extends Controller
         return redirect('/employees');
 
     }
+
+
+    public function import_view()
+    {
+        return view('Employees.import-view');
+    }
+
+    public function import_excel(Request $request)
+    {
+
+        $file = $request->file('import_file');
+        
+        try
+        {
+            Excel::import(new EmployeeImport, $file);
+            return redirect('/employees');
+        } 
+        catch ( \Throwable $th) 
+        {
+            echo('La importación no se realizó correctamente, revisa las recomendaciones');
+        }
+
+
+    }
+
+
 }

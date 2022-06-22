@@ -16,19 +16,24 @@
 
 <body>
     <div>
-        <nav class="navbar navbar-expand-lg bg-success p-2 text-dark bg-opacity-25">
+        <nav class="navbar navbar-expand-sm bg-primary p-2 text-dark bg-opacity-25">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"></a>
+                <div>
+                    <a class="navbar-brand" href="#">Control de ingreso</a>
+                </div>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavAltMarkup">
+                <center>
+                <div class="collapse navbar-collapse nav" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" href="/register" ><i class="fa-solid fa-id-card"></i> Registro</a>
                         <a class="nav-link active" href="/employees" ><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                         <a class="nav-link active" href="/reports" ><i class="fa-solid fa-calendar-check"></i> Reportes</a>
                     </div>
                 </div>
+                </center>
             </div>
         </nav>
     </div>

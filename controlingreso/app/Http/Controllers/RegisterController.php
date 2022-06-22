@@ -19,17 +19,17 @@ class RegisterController extends Controller
     {
         $identification = $request->get('register');
         
-        $Employee = Employee::Where('identification', $identification)->get();
+        $Register = Employee::Where('identification', $identification)->get();
 
-        $date = Carbon::now();
+        $date = Carbon::now('America/Bogota');
 
-        foreach ($Employee as $Employee) {
+        foreach ($Register as $Register) {
             DB::table('reports')
             ->insert([
-                'identification' => $Employee->identification,
-                'fullname' => $Employee->fullname,
-                'area' => $Employee->area,
-                'site' => $Employee->site,
+                'identification' => $Register->identification,
+                'fullname' => $Register->fullname,
+                'area' => $Register->area,
+                'site' => $Register->site,
                 'created_at' => $date
             ]);
         }

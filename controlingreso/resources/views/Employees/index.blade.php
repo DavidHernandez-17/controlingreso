@@ -3,8 +3,10 @@
 @section('content')
 <div class="container">
     <div class="container">
-        <a class="btn btn-outline-primary mt-3 mb-4" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
+        <a class="btn btn-outline-dark mt-3 mb-4" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
+        <a class="btn btn-outline-danger mt-3 mb-4" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
     </div>
+
 
     <table id="tableemployees" class="table table-striped text-center table-borderless cell-border">
         <thead>
@@ -28,7 +30,7 @@
                 <td> {{ $Employee->site }} </td>
                 <td> {{ $Employee->updated_at }} </td>
                 <td> 
-                    <a class="btn btn-outline-secondary" href="/employees/{{ $Employee->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-outline-dark" href="/employees/{{ $Employee->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a class="btn btn-outline-danger" href="/employees/{{ $Employee->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
                 </td>
             </tr>
