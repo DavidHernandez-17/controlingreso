@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReportController;
@@ -36,3 +37,6 @@ Route::post('/register/done', [RegisterController::class, 'register']);
 Route::get('/reports', [ReportController::class, 'index']);
 Route::get('/reports/export/excel', [ReportController::class, 'export'])->name('export');
 
+
+//Auth
+Route::get('/auth/login', [AuthController::class, 'index'])->name('login');

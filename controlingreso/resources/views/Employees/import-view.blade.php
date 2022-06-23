@@ -27,7 +27,7 @@
 
     </form>
 </div>
-<div class="container mt-5 card">
+<div class="container mt-5 card" style=" border-top: solid 6px; border-top-color: #3393FF;">
     <div class="row">
         <div class="col-6 col-sm-4 text-center mt-3">
             <h4><i class="fa-solid fa-circle-info text-primary"></i></h4>
