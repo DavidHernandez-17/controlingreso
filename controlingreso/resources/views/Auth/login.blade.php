@@ -6,15 +6,26 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <img class="img-fluid" width="130"  src="{{ asset('assets/Images/logo.png') }}">    
+            <img class="img-fluid" width="130" src="{{ asset('assets/Images/logo.png') }}">
             <h3>Inicio de sesión</h2>
         </div>
         <div class="card-body">
             <p class="login-box-msg">Control de ingreso Alberto Álvarez S S.A</p>
 
-            <form action="/register" method="post">
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Usuario">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Usuario">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fa-solid fa-user"></span>
@@ -22,7 +33,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Contraseña">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReportController;
 use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ RegisterController::class, 'index']);
+Route::get('/', [ LoginController::class, 'index']);
 
 //Employees
 Route::resource('/employees', EmployeeController::class);
@@ -38,5 +40,13 @@ Route::get('/reports', [ReportController::class, 'index']);
 Route::get('/reports/export/excel', [ReportController::class, 'export'])->name('export');
 
 
-//Auth
-Route::get('/auth/login', [AuthController::class, 'index'])->name('login');
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Login
+Route::get('/auth/login', [LoginController::class, 'index'])->name('showlogin');
+Route::post('/auth/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
