@@ -7,9 +7,9 @@
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
             <img class="img-fluid" width="130" src="{{ asset('assets/Images/logo.png') }}">
-            <h3>Inicio de sesión</h2>
         </div>
         <div class="card-body">
+            <h5 class="text-center">Inicio de sesión</h5>
             <p class="login-box-msg">Control de ingreso Alberto Álvarez S S.A</p>
 
             @if($errors->any())
@@ -27,9 +27,6 @@
                 <li>{{ $_GET['MessageError'] }}</li>
             </div>
             @endif
-
-
-
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf

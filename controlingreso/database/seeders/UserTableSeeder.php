@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -31,7 +32,8 @@ class UserTableSeeder extends Seeder
 
         foreach ($users as $user) 
         {
-            DB::table('users')->insert($user);
+            $UserCreated = User::create($user);
+            $UserCreated->assignRole('Admin');
         }
         
     }

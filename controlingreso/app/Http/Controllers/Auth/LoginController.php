@@ -53,7 +53,7 @@ class LoginController extends Controller
             'email' => 'required|min:5',
             'password' => 'required|min:6'
         ],[
-            'email.required' => 'Este campo es requerido',
+            'email.required' => 'El correo electrónico es requerido',
             'password.required' => 'La contraseña es requerida',
             'password.min' => 'La contraseña debe tener mínimo 6 caracteres'
         ]);
@@ -65,7 +65,7 @@ class LoginController extends Controller
             if (Hash::check($request->password, $user->password)) 
             {
                 Auth::login($user);
-                return redirect('/employees');
+                return redirect('/reports');
             }
             
             return redirect()->route('login',[

@@ -3,13 +3,13 @@
 @section('content')
 <div class="mt-2"></div>
 <div class="container">
-    <a class="btn btn-outline-success mt-3 mb-3" href="{{ route('export') }}"><i class="fa-solid fa-download"></i> Exportar</a>
+    <a class="btn mt-3 mb-3 text-light" style="background-color: orange" href="{{ route('export') }}"><i class="fa-solid fa-download"></i> Exportar</a>
 </div>
 <div class="container">
     <table id="tableregister" class="table table-striped text-center table-borderless cell-border">
         <thead>
             <th colspan="12" class="text-center">
-                <h5><i class="fa-solid fa-calendar-check mt-2 text-secondary"></i><strong> Reporte registrado por usuario</strong></h5>
+                <h5><i class="fa-solid fa-calendar-check mt-2"></i><strong> Reporte registrado por usuario</strong></h5>
             </th>
             <tr>
                 <th class="text-center">Cédula</th>

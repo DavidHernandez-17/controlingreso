@@ -2,22 +2,35 @@
 
 @section('content')
 
-<div class="text-center mt-3 grid">
+<div class="mt-3">
     <div class="d-flex" style="height: 100px;">
         <div class="vr"></div>
     </div>
-    <div>
-        <h4 class="mb-3"><i class="fa-solid fa-id-card"></i><strong> Registro de usuarios</strong></h4>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card card-orange">
+                    <div class="card-header">
+                        <h3 class="card-title text-light"><i class="fa-solid fa-id-card"></i> Registro de usuarios</h3>
+                    </div>
+                    <form action="/register/done" method="POST" class="container">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="text" name="register" id="register" class="form-control" autofocus>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary"><i class="fa-regular fa-circle-check"></i> Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <form action="/register/done" method="POST" class="container">
-        @csrf
-        <div>
-            <input type="text" name="register" id="register" class="form-control text-center" autofocus>
-        </div>
 
-        <button type="submit" class="btn btn-outline-success mt-3"><i class="fa-regular fa-circle-check"></i> Registrar</button>
-    </form>
+
 </div>
 
 @endsection
