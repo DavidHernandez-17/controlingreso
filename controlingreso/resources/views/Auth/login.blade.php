@@ -22,10 +22,19 @@
             </div>
             @endif
 
+            @if( isset($_GET['MessageError']) )
+            <div class="alert alert-danger">
+                <li>{{ $_GET['MessageError'] }}</li>
+            </div>
+            @endif
+
+
+
+
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Usuario">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Usuario" value="{{ $_GET[ 'request' ] ?? '' }}" >
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fa-solid fa-user"></span>

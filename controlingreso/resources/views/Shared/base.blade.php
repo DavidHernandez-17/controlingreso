@@ -37,7 +37,7 @@
 
                         <div class="dropdown">
                             <a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                                <i class="fa-solid fa-circle-user"></i> {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>

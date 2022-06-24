@@ -68,7 +68,11 @@ class LoginController extends Controller
                 return redirect('/employees');
             }
             
-            return redirect('/auth/login')->with([$request,['Message Error'=>'Datos invalidos']]);
+            return redirect()->route('login',[
+                    'MessageError'=>'Datos invalidos',
+                    'request' => $request->email
+                ]
+            );
         }
 
     }
