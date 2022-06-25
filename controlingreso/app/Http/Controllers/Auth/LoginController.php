@@ -69,7 +69,7 @@ class LoginController extends Controller
             }
             
             return redirect()->route('login',[
-                    'MessageError'=>'Datos invalidos',
+                    'MessageError'=>'Email o contraseña incorrecta',
                     'request' => $request->email
                 ]
             );

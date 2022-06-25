@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,11 @@ Route::get('/reports/export/excel', [ReportController::class, 'export'])->name('
 
 // Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+
+//Users
+Route::resource('/users', UserController::class)->middleware('auth');
+Route::get('/users/{id}/confirmdelete', [UserController::class, 'confirmdelete'])->name('confirmdelete')->middleware('auth');
 
 
 //Login

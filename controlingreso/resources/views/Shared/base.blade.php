@@ -35,6 +35,7 @@
                         <a class="nav-link active text-secondary" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a>
                         <a class="nav-link active text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                         <a class="nav-link active text-secondary" href="/reports"><i class="fa-solid fa-calendar-check"></i> Reportes</a>
+                        <a class="nav-link active text-secondary" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a>
 
                         <div class="dropdown">
                             <a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
