@@ -10,6 +10,10 @@
         <div class="alert alert-success">{{ session('info') }}</div>
     @endif
 
+    @if(session('info_password'))
+        <div class="alert alert-success">{{ session('info_password') }}</div>
+    @endif
+
 
     <table id="tableusers" class="table table-striped text-center table-borderless cell-border">
         <thead>
@@ -36,6 +40,7 @@
                 <td>  </td>
                 <td>
                     <a class="btn btn-outline-secondary" href="/users/{{ $User->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-outline-primary" href="/users/{{ $User->id }}/edit/password" ><i class="fa-solid fa-key"></i></a>
                     <a class="btn btn-outline-danger" href="/users/{{ $User->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
                 </td>
             </tr>

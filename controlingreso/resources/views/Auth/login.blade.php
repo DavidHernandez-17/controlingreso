@@ -64,7 +64,7 @@
             </form>
 
             <p class="mb-1">
-                <a href="forgot-password.html">¿Has olvidado tu contraseña?</a>
+                <a href=" {{ route('forgot-password') }}">¿Has olvidado tu contraseña?</a>
             </p>
         </div>
         <!-- /.card-body -->

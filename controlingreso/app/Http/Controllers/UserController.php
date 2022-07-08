@@ -137,4 +137,44 @@ class UserController extends Controller
 
         return redirect('/users');
     }
+
+    public function edit_password($id)
+    {
+        $user = User::findOrfail($id);
+
+        return view('Users.editpassword', [
+            'User' => $user,
+        ]);
+    }
+
+    public function edit_password_confirm(Request $request, $id)
+    {
+        $validData = $request->validate([
+            'password' => 'required|min:6',
+        ],[
+            'password.required' => 'La contraseña debe contener mínimo 6 dígitos.',
+            'password.min' => 'La contraseña debe contener mínimo 6 dígitos.'
+        ]);
+
+        $user = User::findOrfail($id);
+
+        if($request->password != $request->confirm_password)
+        {
+            $Message = 'La confirmación de contraseñas no coincide, inténtelo de nuevo.';
+
+            return view('Users.editpassword', [
+                'User' => $user,
+                'Message' => $Message
+            ]);
+        }
+        else
+        {
+            $user->password = bcrypt($request->get('password'));
+            $user->save();
+            return redirect('/users')->with('info_password', 'La contraseña fue actualizada correctamente.');
+        }
+
+    }
+
+
 }

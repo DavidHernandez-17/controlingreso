@@ -94,5 +94,31 @@ class LoginController extends Controller
         return redirect('/auth/login');
     }
 
+    public function forgot()
+    {
+        return view('Auth.forgot-password');
+    }
+
+    public function forgot_confirm(Request $request)
+    {
+        $ValidData = $request->validate([
+            'email' => 'required|min:5',
+        ],[
+            'email.required' => 'El correo electrónico es requerido',
+        ]);
+
+        $user = User::where('email', $request->email)->first();        
+
+        if($user)
+        {
+            return redirect('/forgot-password')->with('Confirm', 'Para obtener una nueva clave comunicate al número 3103271847');
+        }
+        else
+        {
+            return redirect('/forgot-password')->with('noConfirm', 'El correo electrónico no existe');
+        }
+
+    }
+
    
 }

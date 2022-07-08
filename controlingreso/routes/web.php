@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
@@ -49,9 +50,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Users
 Route::resource('/users', UserController::class)->middleware('auth');
 Route::get('/users/{id}/confirmdelete', [UserController::class, 'confirmdelete'])->name('confirmdelete')->middleware('auth');
-
+Route::get('/users/{id}/edit/password', [UserController::class, 'edit_password'])->name('edit_password');
+Route::put('/users/{id}/edit/password_confirm', [UserController::class, 'edit_password_confirm'])->name('edit_password_confirm');
 
 //Login
 Route::get('/auth/login', [LoginController::class, 'index'])->name('showlogin');
 Route::post('/auth/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/forgot-password', [LoginController::class, 'forgot'])->name('forgot-password');
+Route::post('/forgot-confirm', [LoginController::class, 'forgot_confirm'])->name('forgot-confirm');

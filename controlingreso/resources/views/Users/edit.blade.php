@@ -33,10 +33,6 @@
                                 <input type="text" readonly name="email" id="email" class="form-control" value="{{ $User->email }}" value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
-                                <label class="text-primary">Contraseña</label>
-                                <input type="password" name="password" id="password" class="form-control" value="{{ $User->password }}" value="{{ old('password') }}">
-                            </div>
-                            <div class="form-group">
                                 <label class="text-primary">Rol</label>
                                 <select name="role" id="role" class="form-control" required>
                                     <option value="">-- Selecciona un rol --</option>
@@ -47,6 +43,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                            <a class="btn text-light" style="background-color: orange" href="/users/{{ $User->id }}/edit/password"><i class="fa-solid fa-key"></i> Cambiar contraseña</a>
                             <a class="btn btn-secondary" href="/users"><i class="fa-solid fa-rotate-left"></i> Regresar</a>
                         </div>
                     </form>
