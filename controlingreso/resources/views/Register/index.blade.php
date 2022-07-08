@@ -2,6 +2,10 @@
 
 @section('content')
 
+<?php
+    header("Refresh:180");
+?>
+
 <div class="mt-3">
     <div class="d-flex" style="height: 100px;">
         <div class="vr"></div>

@@ -31,7 +31,11 @@
                 <td> {{ $Employee->updated_at }} </td>
                 <td> 
                     <a class="btn btn-outline-secondary" href="/employees/{{ $Employee->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a class="btn btn-outline-danger" href="/employees/{{ $Employee->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
+
+                    @can('employees.delete')
+                        <a class="btn btn-outline-danger" href="/employees/{{ $Employee->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
+                    @endcan
+
                 </td>
             </tr>
             @endforeach

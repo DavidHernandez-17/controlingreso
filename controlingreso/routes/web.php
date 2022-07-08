@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index']);
 
+
+
 //Employees
 Route::resource('/employees', EmployeeController::class)->middleware('auth');
 Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirmdelete'])->name('confirmdelete')->middleware('auth');

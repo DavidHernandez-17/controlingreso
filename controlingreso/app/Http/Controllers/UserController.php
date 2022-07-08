@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -28,7 +29,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Users.create');
+        $Roles = Role::all();
+        return view('Users.create', [
+            'Roles' => $Roles
+        ]);
     }
 
     /**
@@ -50,9 +54,10 @@ class UserController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->password = bcrypt($request->get('password'));
+        $user->roles()->sync($request->role);
 
         $user->save();  
-        return redirect('/users');
+        return redirect('/users')->with('info', 'El usuario fue creado correctamente.');
     }
 
 
@@ -76,8 +81,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrfail($id);
+        $roles = Role::all();
+
         return view('Users.edit', [
-            'User' => $user
+            'User' => $user,
+            'Roles' => $roles
         ]);
     }
 
@@ -100,9 +108,10 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $user->name = $request->get('name');
         $user->password = bcrypt($request->get('password'));
+        $user->roles()->sync($request->roles);
 
         $user->save();
-        return redirect('/users');
+        return redirect('/users')->with('info', 'El usuario fue actualizado correctamente.');
     }
 
 

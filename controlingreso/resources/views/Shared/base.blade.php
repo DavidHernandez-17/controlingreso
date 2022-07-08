@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png"  href="{{ asset('assets/Images/logoA.png') }}">
+    <link rel="icon" type="image/png"  href="{{ asset('assets/Images/LogoA.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/adminlte.min.css') }}">
@@ -25,17 +25,20 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container-fluid">
                 <div>
-                    <img src="{{ asset('assets/Images/logoA.png') }}" alt="AlbertoAlvarez Logo" class="brand-image img-circle elevation-4" style="opacity: .7;" >
+                    <img src="{{ asset('assets/Images/LogoA.png') }}" alt="AlbertoAlvarez Logo" class="brand-image img-circle elevation-4" style="opacity: .7;" >
                     <span class="brand-text text-secondary font-weight-light">Control de ingreso</span>
                 </div>
 
                 <center>
                 <div class="collapse navbar-collapse nav float-center" id="navbarNavAltMarkup">
                     <div class="navbar-nav ">
-                        <a class="nav-link active text-secondary" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a>
+                        @can('register.index')
+                            <a class="nav-link active text-secondary" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a>
+                            <a class="nav-link active text-secondary" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a>
+                        @endcan
+
                         <a class="nav-link active text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                         <a class="nav-link active text-secondary" href="/reports"><i class="fa-solid fa-calendar-check"></i> Reportes</a>
-                        <a class="nav-link active text-secondary" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a>
 
                         <div class="dropdown">
                             <a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
