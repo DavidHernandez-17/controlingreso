@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Imports\EmployeeImport;
 use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -16,8 +18,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
+        // $auth = Auth::user()->name;
+        // where('fullname', $auth)->get();
+        $employee = Employee::all();
+
         return view('Employees.index', [
-            'Employees' => Employee::all()
+            'Employees' => $employee
         ]);
     }
 
@@ -46,13 +52,17 @@ class EmployeeController extends Controller
             'site' => 'required|min:2'
         ]);
 
+        $date = Carbon::now('America/Bogota');
+
         $employee = new Employee();
         $employee->identification = $request->get('identification');
         $employee->fullname = $request->get('fullname');
         $employee->area = strtoupper($request->get('area'));  
         $employee->site = strtoupper($request->get('site'));
-
+        $employee->created_at = $date;
+        $employee->updated_at = $date;
         $employee->save();
+        
         return redirect('/employees');
     }
 
@@ -98,11 +108,15 @@ class EmployeeController extends Controller
             'site' => 'required|min:2'
         ]);
 
+        $date = Carbon::now('America/Bogota');
+
         $Employee = Employee::findOrfail($id);
         $Employee->identification = $request->get('identification');
         $Employee->fullname = $request->get('fullname');
         $Employee->area = strtoupper($request->get('area'));  
         $Employee->site = strtoupper($request->get('site'));
+        $Employee->created_at = $date;
+        $Employee->updated_at = $date;
 
         $Employee->save();
         return redirect('/employees');       
@@ -150,11 +164,14 @@ class EmployeeController extends Controller
         try
         {
             Excel::import(new EmployeeImport, $file);
-            return redirect('/employees');
+            return redirect('/employees')->with('info', 'La importación se realizó correctamente.');
         } 
         catch ( \Throwable $th) 
         {
-            echo('La importación no se realizó correctamente, revisa las recomendaciones');
+            $error = 'La importación no se realizó correctamente, sigue las recomendaciones ubicadas en la parte inferior.';
+            return view('Employees.import-view', [
+                'Error' => $error
+            ]);
         }
 
 

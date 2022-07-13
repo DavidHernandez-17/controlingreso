@@ -21,7 +21,7 @@
                     @endif
 
                     @if( isset($Message) )
-                        <li class="alert alert-danger">{{ $Message }}</li>
+                        <li class="alert alert-danger mt-3">{{ $Message }}</li>
                     @endif
 
 
@@ -39,7 +39,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Cambiar</button>
-                            <a class="btn btn-secondary" href="/users/{{ $User->id }}/edit"><i class="fa-solid fa-rotate-left"></i> Regresar</a>
+                            <a class="btn btn-secondary" href="/users"><i class="fa-solid fa-ban"></i> Cancelar</a>
                         </div>
                     </form>
                 </div>

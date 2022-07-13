@@ -9,7 +9,7 @@
     <table id="tableregister" class="table table-striped text-center table-borderless cell-border">
         <thead>
             <th colspan="12" class="text-center">
-                <h5><i class="fa-solid fa-calendar-check mt-2"></i><strong> Reporte registrado por usuario</strong></h5>
+                <h5><i class="fa-solid fa-calendar-check mt-2"></i><strong> Reporte registrado por colaborador</strong></h5>
             </th>
             <tr>
                 <th class="text-center">Cédula</th>

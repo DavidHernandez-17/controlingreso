@@ -2,11 +2,16 @@
 
 @section('content')
 <div class="container">
+
+    @if( session('info') )
+        <li class="alert alert-success">{{ session('info') }}</li>
+    @endif
+
+
     <div class="container">
         <a class="btn btn-primary mt-3 mb-4" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
         <a class="btn mt-3 mb-4 text-light" style="background-color: orange" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
     </div>
-
 
     <table id="tableemployees" class="table table-striped text-center table-borderless cell-border">
         <thead>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -15,10 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-
+        $users = User::with('roles')->get();
         return view('Users.index', [
-            'User' => $user
+            'User' => $users
         ]);
     }
 
@@ -47,16 +48,28 @@ class UserController extends Controller
             'name' => 'required|min:5',
             'email' => 'required|min:3|unique:users,email'.$request->id,
             'password' => 'required|min:6',
-            // 'role' => 'required|min:2'
+            'role' => 'required'
+        ],[
+            'name.required' => 'El nombre es obligatorio',
+            'name.min' => 'El usuario debe contener mínimo 5 caracteres',
+            'email.required' => 'El correo electrónico es requerido',
+            'email.unique' => 'El correo electrónico ya existe, inténtelo de nuevo',
+            'password.required' => 'La contraseña es obligatoria',
+            'password.min' => 'La clave debe contener mínimo 6 caracteres',
+            'role.required' => 'El rol es obligatorio'
         ]);
+
+        $date = Carbon::now('America/Bogota');
 
         $user = new User();
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->password = bcrypt($request->get('password'));
-        $user->roles()->sync($request->role);
-
+        $user->created_at = $date;
+        $user->updated_at = $date;
+        $user->assignRole($request->role);
         $user->save();  
+
         return redirect('/users')->with('info', 'El usuario fue creado correctamente.');
     }
 
@@ -101,16 +114,17 @@ class UserController extends Controller
         $validData = $request->validate([
             'name' => 'required|min:5',
             'email' => 'required|min:3',
-            'password' => 'required|min:6',
-            // 'role' => 'required|min:2'
+            'role' => 'required'
         ]);
+
+        $date = Carbon::now('America/Bogota');
 
         $user = User::findOrfail($id);
         $user->name = $request->get('name');
-        $user->password = bcrypt($request->get('password'));
-        $user->roles()->sync($request->roles);
-
+        $user->updated_at = $date;
+        $user->roles()->sync($request->role);
         $user->save();
+
         return redirect('/users')->with('info', 'El usuario fue actualizado correctamente.');
     }
 
@@ -135,7 +149,7 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $user->delete();
 
-        return redirect('/users');
+        return redirect('/users')->with('info', 'El usuario fue eliminado correctamente');
     }
 
     public function edit_password($id)
@@ -160,7 +174,7 @@ class UserController extends Controller
 
         if($request->password != $request->confirm_password)
         {
-            $Message = 'La confirmación de contraseñas no coincide, inténtelo de nuevo.';
+            $Message = 'Las contraseñas no coinciden, inténtelo de nuevo.';
 
             return view('Users.editpassword', [
                 'User' => $user,
@@ -171,7 +185,7 @@ class UserController extends Controller
         {
             $user->password = bcrypt($request->get('password'));
             $user->save();
-            return redirect('/users')->with('info_password', 'La contraseña fue actualizada correctamente.');
+            return redirect('/users')->with('info', 'La contraseña fue actualizada correctamente.');
         }
 
     }

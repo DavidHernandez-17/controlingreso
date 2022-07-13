@@ -23,6 +23,9 @@
                     <form action="/employees/import/excel" method="POST" class="container" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
+                            @if( isset($Error))
+                                <li class="alert alert-danger">{{ $Error }}</li>
+                            @endif
                             <input type="file" class="form-control" name="import_file">
 
                             <div>
