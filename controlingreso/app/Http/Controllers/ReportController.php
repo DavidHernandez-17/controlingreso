@@ -11,6 +11,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:reports.index');
+    }
+
     public function index()
     {
         return view('Reports.index', [

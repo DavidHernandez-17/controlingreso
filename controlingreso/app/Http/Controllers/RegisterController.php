@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
+
+    public function __construct()
+    {   
+        $this->middleware('can:register.index');
+    }
+
     public function index()
     {
         return view('Register.index');

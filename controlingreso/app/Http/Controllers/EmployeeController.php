@@ -11,6 +11,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:employees.delete')->only('confirmdelete', 'destroy');
+        $this->middleware('can:employees.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
