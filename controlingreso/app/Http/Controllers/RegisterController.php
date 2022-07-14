@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AccessNotification;
 use App\Models\Employee;
 use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -39,6 +41,11 @@ class RegisterController extends Controller
                 'created_at' => $date
             ]);
         }
+
+        $employee = 'dh172020@yopmail.com';
+        $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
+
+        Mail::to($employee)->send(new AccessNotification($report));
 
         return redirect('/register');
 

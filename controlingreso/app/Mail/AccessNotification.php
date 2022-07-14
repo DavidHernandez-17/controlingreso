@@ -8,19 +8,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ReportsUsers extends Mailable
+class AccessNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $Report;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Report $report)
-    {
-        $this->Report = $report;
+    public $reports;
+
+    public function __construct(Report $reports)
+    {   
+        $this->reports = $reports; 
     }
 
     /**
@@ -30,8 +31,6 @@ class ReportsUsers extends Mailable
      */
     public function build()
     {
-        return $this->view('Mail.generalreports', [
-            'Report' => $this->Report
-        ]);
+        return $this->view('Mail.Notification');
     }
 }
