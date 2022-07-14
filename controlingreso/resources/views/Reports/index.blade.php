@@ -16,6 +16,7 @@
                 <th class="text-center">Nombre completo</th>
                 <th class="text-center">Área</th>
                 <th class="text-center">Sede</th>
+                <th class="text-center">Correo electrónico</th>
                 <th class="text-center">Fecha y hora de ingreso</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                 <td> {{ $Report->fullname }} </td>
                 <td> {{ $Report->area }} </td>
                 <td> {{ $Report->site }} </td>
+                <td> {{ $Report->email }} </td>
                 <td> {{ $Report->created_at }} </td>
             </tr>
             @endforeach

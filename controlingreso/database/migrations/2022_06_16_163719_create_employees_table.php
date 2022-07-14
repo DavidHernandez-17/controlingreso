@@ -19,6 +19,8 @@ class CreateEmployeesTable extends Migration
             $table->string('fullname');
             $table->string('area');
             $table->string('site');
+            $table->string('email');
+            $table->string('nickname');
             $table->timestamps();
         });
     }

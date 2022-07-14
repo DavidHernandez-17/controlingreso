@@ -38,16 +38,28 @@ class RegisterController extends Controller
                 'fullname' => $Register->fullname,
                 'area' => $Register->area,
                 'site' => $Register->site,
+                'email' => $Register->email,
+                'nickname' => $Register->nickname,
                 'created_at' => $date
             ]);
         }
+        
+        try 
+        {
+            $email = $Register->email;
+            $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
+    
+            Mail::to($email)->send(new AccessNotification($report));
 
-        $employee = 'dh172020@yopmail.com';
-        $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
+            return redirect('/register');
 
-        Mail::to($employee)->send(new AccessNotification($report));
+        } 
+        catch (\Throwable $th) 
+        {
+            return redirect('/register');
 
-        return redirect('/register');
+        }
+
 
     }
 

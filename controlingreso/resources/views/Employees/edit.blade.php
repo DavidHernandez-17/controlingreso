@@ -40,6 +40,26 @@
                                 <label class="text-primary">Sede</label>
                                 <input type="text" name="site" id="site" class="form-control" value="{{ $Employee->site }}" value="{{ old('site') }}">
                             </div>
+                            @can('only.user')
+                            <div class="form-group">
+                                <label class="text-primary">Correo electrónico</label>
+                                <input type="text" name="email" id="email" class="form-control" value="{{ $Employee->email }}" value="{{ old('email') }}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-primary">Apodo</label>
+                                <input type="text" name="nickname" id="nickname" class="form-control" value="{{ $Employee->nickname }}" value="{{ old('nickname') }}" readonly>
+                            </div>
+                            @endcan
+                            @can('employees.edit')
+                            <div class="form-group">
+                                <label class="text-primary">Correo electrónico</label>
+                                <input type="text" name="email" id="email" class="form-control" value="{{ $Employee->email }}" value="{{ old('email') }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-primary">Apodo</label>
+                                <input type="text" name="nickname" id="nickname" class="form-control" value="{{ $Employee->nickname }}" value="{{ old('nickname') }}">
+                            </div>
+                            @endcan
 
                             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
                             <a class="btn btn-secondary" href="/employees"><i class="fa-solid fa-rotate-left"></i> Regresar</a>

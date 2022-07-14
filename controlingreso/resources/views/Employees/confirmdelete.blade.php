@@ -16,7 +16,9 @@
                         <h3 class="card-title"><strong>Colaborador: </strong> {{ $Employee->fullname }}</h3><br>
                         <h3 class="card-title"><strong>Identificación: </strong> {{ $Employee->identification }}</h3><br>
                         <h3 class="card-title"><strong>Área: </strong> {{ $Employee->area }}</h3><br>
-                        <h3 class="card-title"><strong>Sede: </strong> {{ $Employee->site }}</h3>
+                        <h3 class="card-title"><strong>Sede: </strong> {{ $Employee->site }}</h3><br>
+                        <h3 class="card-title"><strong>Correo electrónico: </strong> {{ $Employee->email }}</h3><br>
+                        <h3 class="card-title"><strong>Apodo: </strong> {{ $Employee->nickname }}</h3><br>
                     </div>
 
                     <form action="/employees/{{ $Employee->id }}" method="POST">

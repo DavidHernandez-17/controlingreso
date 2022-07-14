@@ -9,7 +9,7 @@
 </head>
 <body>
     <h4><i class="fa-solid fa-envelope-circle-check"></i> Notificación - Control de ingreso AA</h4>
-    <p>Hola! {{ $reports->fullname }}</p>
+    <p>Hola {{ $reports->nickname }} !!</p>
     <p>Tienes una nueva notificación de acceso, te dejaremos los datos a continuación, que tengas un excelente día.</p>
     <ul>
         <li>Identificación: {{ $reports->identification }}</li>

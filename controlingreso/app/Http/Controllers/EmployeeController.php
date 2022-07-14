@@ -56,7 +56,9 @@ class EmployeeController extends Controller
             'identification' => 'required|min:3|unique:employees,identification'.$request->id,
             'fullname' => 'required|min:2',
             'area' => 'required|min:2',
-            'site' => 'required|min:2'
+            'site' => 'required|min:2',
+            'email' => 'required',
+            'nickname' => 'required|min:4'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -66,6 +68,8 @@ class EmployeeController extends Controller
         $employee->fullname = $request->get('fullname');
         $employee->area = strtoupper($request->get('area'));  
         $employee->site = strtoupper($request->get('site'));
+        $employee->email = $request->get('email');
+        $employee->nickname = $request->get('nickname');
         $employee->created_at = $date;
         $employee->updated_at = $date;
         $employee->save();
@@ -112,20 +116,24 @@ class EmployeeController extends Controller
             'identification' => 'required|min:3',
             'fullname' => 'required|min:2',
             'area' => 'required|min:2',
-            'site' => 'required|min:2'
+            'site' => 'required|min:2',
+            'email' => 'required',
+            'nickname' => 'required|min:4'            
         ]);
 
         $date = Carbon::now('America/Bogota');
 
-        $Employee = Employee::findOrfail($id);
-        $Employee->identification = $request->get('identification');
-        $Employee->fullname = $request->get('fullname');
-        $Employee->area = strtoupper($request->get('area'));  
-        $Employee->site = strtoupper($request->get('site'));
-        $Employee->created_at = $date;
-        $Employee->updated_at = $date;
+        $employee = employee::findOrfail($id);
+        $employee->identification = $request->get('identification');
+        $employee->fullname = $request->get('fullname');
+        $employee->area = strtoupper($request->get('area'));  
+        $employee->site = strtoupper($request->get('site'));
+        $employee->email = $request->get('email');
+        $employee->nickname = $request->get('nickname');
+        $employee->created_at = $date;
+        $employee->updated_at = $date;
 
-        $Employee->save();
+        $employee->save();
         return redirect('/employees');       
 
     }
