@@ -177,7 +177,7 @@ class UserController extends Controller
         $validData = $request->validate([
             'password' => 'required|min:6',
         ],[
-            'password.required' => 'La contraseña debe contener mínimo 6 dígitos.',
+            'password.required' => 'La contraseña es requerida.',
             'password.min' => 'La contraseña debe contener mínimo 6 dígitos.'
         ]);
 

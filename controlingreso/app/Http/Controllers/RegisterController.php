@@ -6,6 +6,7 @@ use App\Mail\ControlIngresoAA;
 use App\Models\Employee;
 use App\Models\Report;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -27,35 +28,100 @@ class RegisterController extends Controller
     {
         $identification = $request->get('register');
 
-        $Register = Employee::Where('identification', $identification)->get();
+        $employees = Employee::Where('identification', $identification)->get();
 
-        $date = Carbon::now('America/Bogota');
+        //Define zona horaria
+        date_default_timezone_set("America/Bogota");
+        //Hora y fecha actual
+        $date = getDate();
+        //Conversión fecha y hora actual
+        $entry = date('Y-m-j H:i:s');
 
-        foreach ($Register as $Register) {
-            DB::table('reports')
-                ->insert([
-                    'identification' => $Register->identification,
-                    'fullname' => $Register->fullname,
-                    'area' => $Register->area,
-                    'site' => $Register->site,
-                    'email' => $Register->email,
-                    'nickname' => $Register->nickname,
-                    'created_at' => $date
-                ]);
-        }
+        $ConvertCurrent = date('Y-m-j');
 
-        try
+        //Buscar reportes relacionado con empleado
+        
+        $searches = Report::where('identification', $identification)->orderBy('id', 'asc')->get();      
+        
+        //Si existe algún reporte
+        if( (sizeof($searches)) == 0 ) 
         {
-            // $email = $Register->email;
-            // $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
+            foreach ($employees as $Register) {
+                DB::table('reports')
+                    ->insert([
+                        'identification' => $Register->identification,
+                        'fullname' => $Register->fullname,
+                        'area' => $Register->area,
+                        'site' => $Register->site,
+                        'email' => $Register->email,
+                        'nickname' => $Register->nickname,
+                        'created_at' => $entry
+                    ]);
+            }
 
-            // Mail::to($email)->send(new ControlIngresoAA($report));
             return redirect('/register');
-
         }
-        catch (\Throwable $th)
+        //Si no existe algún reporte
+        else
         {
-            return redirect('/register');
+            foreach ($searches as $search) {
+                $created = $search->created_at;
+            }
+
+            $fecha = date_format($created, 'Y-m-j');
+
+            if ($fecha == $ConvertCurrent) {
+
+                $exit = date('Y-m-j H:i:s');
+
+                $searches2 = Report::where('identification', $identification)->get();
+                foreach ($searches2 as $search2) {
+                    $id = $search2->id;
+                }
+
+                $UpdateReport = Report::find($id);
+                $UpdateReport->updated_at = $exit;
+                $UpdateReport->save();
+
+                return redirect('/register');
+            } 
+            else 
+            {
+                foreach ($employees as $Register) {
+                    DB::table('reports')
+                        ->insert([
+                            'identification' => $Register->identification,
+                            'fullname' => $Register->fullname,
+                            'area' => $Register->area,
+                            'site' => $Register->site,
+                            'email' => $Register->email,
+                            'nickname' => $Register->nickname,
+                            'created_at' => $entry
+                        ]);
+                }
+
+                return redirect('/register');
+            }
         }
+
+
+
+        //$validate = Report::where('identification', $identification)->between();
+
+
+        // try
+        // {
+        //     // $email = $Register->email;
+        //     // $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
+
+        //     // Mail::to($email)->send(new ControlIngresoAA($report));
+        //     return redirect('/register');
+
+        // }
+        // catch (\Throwable $th)
+        // {
+        //     return redirect('/register');
+        // }
+
     }
 }

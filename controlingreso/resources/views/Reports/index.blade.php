@@ -10,9 +10,9 @@
         <a class="btn mt-3 mb-3 text-light btn-sm btn-secondary" href="{{ route('exportAll') }}"><i class="fa-solid fa-download"></i> Exportar Todos los registros</a>
     @endcan
     @can('reports.indexAll')
-        <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('indexAll') }}"></i><i class="fa-solid fa-eye"></i> Todos los reportes</a>
+        <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('indexAll') }}"></i>
+        <i class="fa-solid fa-eye"></i>Todos los reportes</a>
     @endcan
-    
     @if( isset($Message) )
         <li class="alert alert-success">{{ $Message }}</li>
     @endif
@@ -30,7 +30,8 @@
                 <th class="text-center">Área</th>
                 <th class="text-center">Sede</th>
                 <th class="text-center">Correo electrónico</th>
-                <th class="text-center">Fecha y hora de ingreso</th>
+                <th class="text-center">Registro de ingreso</th>
+                <th class="text-center">Registro de salida</th>
             </tr>
         </thead>
 
@@ -43,6 +44,7 @@
                 <td> {{ $Report->site }} </td>
                 <td> {{ $Report->email }} </td>
                 <td> {{ $Report->created_at }} </td>
+                <td> {{ $Report->updated_at }} </td>
             </tr>
             @endforeach
         </tbody>

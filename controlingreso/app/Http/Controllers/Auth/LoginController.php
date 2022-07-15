@@ -111,7 +111,7 @@ class LoginController extends Controller
 
         if($user)
         {
-            return redirect('/forgot-password')->with('Confirm', 'Para obtener una nueva clave comunicate al número 3103271847');
+            return redirect('/forgot-password')->with('Confirm', 'Para obtener una nueva clave comunicate con el área de gestión TIC');
         }
         else
         {
