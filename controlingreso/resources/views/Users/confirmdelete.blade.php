@@ -15,6 +15,7 @@
                     <div class="card-header">
                         <h3 class="card-title"><strong>Usuario: </strong> {{ $User->name }}</h3><br>
                         <h3 class="card-title"><strong>Correo electrónico: </strong> {{ $User->email }}</h3><br>
+                        <h3 class="card-title"><strong>Área: </strong> {{ $User->area }}</h3><br>
                     </div>
 
                     <form action="/users/{{ $User->id }}" method="POST">

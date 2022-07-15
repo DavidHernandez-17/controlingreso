@@ -54,7 +54,8 @@ class UserController extends Controller
             'name' => 'required|min:5',
             'email' => 'required|min:3|unique:users,email'.$request->id,
             'password' => 'required|min:6',
-            'role' => 'required'
+            'role' => 'required',
+            'area' => 'required'
         ],[
             'name.required' => 'El nombre es obligatorio',
             'name.min' => 'El usuario debe contener mínimo 5 caracteres',
@@ -62,7 +63,8 @@ class UserController extends Controller
             'email.unique' => 'El correo electrónico ya existe, inténtelo de nuevo',
             'password.required' => 'La contraseña es obligatoria',
             'password.min' => 'La clave debe contener mínimo 6 caracteres',
-            'role.required' => 'El rol es obligatorio'
+            'role.required' => 'El rol es obligatorio',
+            'area.required' => 'El campo área es obligatoria'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -73,6 +75,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('password'));
         $user->created_at = $date;
         $user->updated_at = $date;
+        $user->area = strtoupper($request->get('area'));
         $user->assignRole($request->role);
         $user->save();  
 
@@ -120,7 +123,8 @@ class UserController extends Controller
         $validData = $request->validate([
             'name' => 'required|min:5',
             'email' => 'required|min:3',
-            'role' => 'required'
+            'role' => 'required',
+            'area' => 'required'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -128,6 +132,7 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $user->name = $request->get('name');
         $user->updated_at = $date;
+        $user->area = strtoupper($request->get('area'));
         $user->roles()->sync($request->role);
         $user->save();
 

@@ -25,7 +25,7 @@
                                 <input type="text" name="register" id="register" class="form-control" autofocus>
                             </div>
 
-                            <button type="submit" class="btn btn-primary"><i class="fa-regular fa-circle-check"></i> Registrar</button>
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-regular fa-circle-check"></i> Registrar</button>
                         </div>
                     </form>
                 </div>

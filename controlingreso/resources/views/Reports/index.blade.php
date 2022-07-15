@@ -3,7 +3,20 @@
 @section('content')
 <div class="mt-2"></div>
 <div class="container">
-    <a class="btn mt-3 mb-3 text-light" style="background-color: orange" href="{{ route('export') }}"><i class="fa-solid fa-download"></i> Exportar</a>
+    @can('reports.index')
+        <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="{{ route('export') }}"><i class="fa-solid fa-download"></i> Exportar</a>
+    @endcan
+    @can('reports.indexAll')
+        <a class="btn mt-3 mb-3 text-light btn-sm btn-secondary" href="{{ route('exportAll') }}"><i class="fa-solid fa-download"></i> Exportar Todos los registros</a>
+    @endcan
+    @can('reports.indexAll')
+        <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('indexAll') }}"></i><i class="fa-solid fa-eye"></i> Todos los reportes</a>
+    @endcan
+    
+    @if( isset($Message) )
+        <li class="alert alert-success">{{ $Message }}</li>
+    @endif
+    
 </div>
 <div class="container">
     <table id="tableregister" class="table table-striped text-center table-borderless cell-border">

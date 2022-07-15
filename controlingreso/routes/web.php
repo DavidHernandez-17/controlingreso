@@ -40,7 +40,9 @@ Route::post('/register/done', [RegisterController::class, 'register'])->middlewa
 
 //Reports
 Route::get('/reports', [ReportController::class, 'index'])->middleware('auth');
+Route::get('/reports/all', [ReportController::class, 'indexAll'])->name('indexAll')->middleware('auth');
 Route::get('/reports/export/excel', [ReportController::class, 'export'])->name('export')->middleware('auth');
+Route::get('/reports/export/excel/all', [ReportController::class, 'exportAll'])->name('exportAll')->middleware('auth');
 
 
 // Auth::routes();

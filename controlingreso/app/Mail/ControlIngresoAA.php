@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AccessNotification extends Mailable
+class ControlIngresoAA extends Mailable
 {
     use Queueable, SerializesModels;
 

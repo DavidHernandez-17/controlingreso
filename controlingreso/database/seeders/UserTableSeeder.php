@@ -19,13 +19,14 @@ class UserTableSeeder extends Seeder
             [
                 'name' => 'David Hernandez',
                 'email' => 'analistasoporte@albertoalvarez.com',
-                'password' => bcrypt('ControlIngreso*')
+                'password' => bcrypt('ControlIngreso*'),
+                'area' => 'GESTIÓN TIC'
             ],
             [
                 'name' => 'Yonairo Argumedo',
                 'email' => 'analistainfraestructura@albertoalvarez.com',
-                'password' => bcrypt('Control*')
-                
+                'password' => bcrypt('Control*'),
+                'area' => 'GESTIÓN TIC'
             ]
         ];
 

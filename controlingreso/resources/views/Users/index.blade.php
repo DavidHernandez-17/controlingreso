@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="container">
-        <a class="btn btn-primary mt-3 mb-4" href="/users/create"><i class="fa-solid fa-circle-plus"></i> Crear usuario</a>
+        <a class="btn btn-primary mt-3 mb-4 btn-sm" href="/users/create"><i class="fa-solid fa-circle-plus"></i> Crear usuario</a>
     </div>
 
     @if(session('info'))
@@ -19,10 +19,10 @@
             <tr>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Correo electrónico</th>
-                <th class="text-center">Fecha de creación</th>
                 <th class="text-center">Fecha de modificación</th>
+                <th class="text-center">Área</th>
                 <th class="text-center">Rol Asignado</th>
-                <th></th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
 
@@ -31,13 +31,13 @@
             <tr>
                 <td> {{ $User->name }} </td>
                 <td> {{ $User->email }} </td>
-                <td> {{ $User->created_at }} </td>
                 <td> {{ $User->updated_at }} </td>
+                <td> {{ $User->area }} </td>
                 <td> {{ $User->roles[0]['name'] }} </td>
                 <td>
-                    <a class="btn btn-outline-secondary" href="/users/{{ $User->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a class="btn btn-outline-primary" href="/users/{{ $User->id }}/edit/password" ><i class="fa-solid fa-key"></i></a>
-                    <a class="btn btn-outline-danger" href="/users/{{ $User->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
+                    <a class="btn btn-outline-secondary btn-sm" href="/users/{{ $User->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-outline-primary btn-sm" href="/users/{{ $User->id }}/edit/password" ><i class="fa-solid fa-key"></i></a>
+                    <a class="btn btn-outline-danger btn-sm" href="/users/{{ $User->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
                 </td>
             </tr>
             @endforeach

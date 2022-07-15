@@ -33,6 +33,10 @@
                                 <input type="text" readonly name="email" id="email" class="form-control" value="{{ $User->email }}" value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
+                                <label class="text-primary">Correo electrónico</label>
+                                <input type="text" name="area" id="area" class="form-control" value="{{ $User->area }}" value="{{ old('area') }}">
+                            </div>
+                            <div class="form-group">
                                 <label class="text-primary">Rol</label>
                                 <select name="role" id="role" class="form-control" required>
                                     <option value="">-- Selecciona un rol --</option>

@@ -24,9 +24,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // $auth = Auth::user()->name;
-        // where('fullname', $auth)->get();
+    {       
         $employee = Employee::all();
 
         return view('Employees.index', [
@@ -58,7 +56,7 @@ class EmployeeController extends Controller
             'area' => 'required|min:2',
             'site' => 'required|min:2',
             'email' => 'required',
-            'nickname' => 'required|min:4'
+            'nickname' => 'required|min:2'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -118,7 +116,7 @@ class EmployeeController extends Controller
             'area' => 'required|min:2',
             'site' => 'required|min:2',
             'email' => 'required',
-            'nickname' => 'required|min:4'            
+            'nickname' => 'required|min:2'            
         ]);
 
         $date = Carbon::now('America/Bogota');

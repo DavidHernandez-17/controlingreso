@@ -9,8 +9,8 @@
 
 
     <div class="container">
-        <a class="btn btn-primary mt-3 mb-4" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
-        <a class="btn mt-3 mb-4 text-light" style="background-color: orange" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
+        <a class="btn btn-primary mt-3 mb-4 btn-sm" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
+        <a class="btn mt-3 mb-4 text-light btn-sm" style="background-color: orange" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
     </div>
 
     <table id="tableemployees" class="table table-striped text-center table-borderless cell-border">
@@ -22,7 +22,7 @@
                 <th class="text-center">Área</th>
                 <th class="text-center">Sede</th>
                 <th class="text-center">Fecha de actualización</th>
-                <th></th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
         
@@ -35,10 +35,10 @@
                 <td> {{ $Employee->site }} </td>
                 <td> {{ $Employee->updated_at }} </td>
                 <td> 
-                    <a class="btn btn-outline-secondary" href="/employees/{{ $Employee->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-outline-secondary btn-sm" href="/employees/{{ $Employee->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
 
                     @can('employees.delete')
-                        <a class="btn btn-outline-danger" href="/employees/{{ $Employee->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
+                        <a class="btn btn-outline-danger btn-sm" href="/employees/{{ $Employee->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
                     @endcan
 
                 </td>

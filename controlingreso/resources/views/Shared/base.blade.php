@@ -26,15 +26,25 @@
             <div class="container-fluid">
                 <div>
                     <img src="{{ asset('assets/Images/LogoA.png') }}" alt="AlbertoAlvarez Logo" class="brand-image img-circle elevation-4" style="opacity: .7;">
-                    <span class="brand-text text-secondary font-weight-light">Control de ingreso</span>
+                    <span class="brand-text text-secondary font-weight-light">Control de ingreso</span> | 
+                    <span class="brand-text text-primary font-weight-light">{{ Auth::user()->area }}</span>
                 </div>
 
                 <center>
                     <div class="collapse navbar-collapse nav float-center" id="navbarNavAltMarkup">
                         <div class="navbar-nav ">
                             @can('register.index')
-                            <a class="nav-link active text-secondary" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a>
-                            <a class="nav-link active text-secondary" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-gear"></i> Administración
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item disabled" href="#"><i class="fa-solid fa-calendar-days"></i> Control asistencia</a></li>
+                                    <li><a class="dropdown-item" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a></li>
+                                    <li><a class="dropdown-item" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a></li>
+                                </ul>
+                            </div>
+
                             @endcan
 
                             <a class="nav-link active text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
@@ -45,7 +55,7 @@
                                     <i class="fa-solid fa-circle-user"></i> Hola, {{ Auth::user()->name }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item btn btn-outline-dark" href="{{ route('logout') }}">Cerrar sesión</a></li>
                                 </ul>
                             </div>
 
