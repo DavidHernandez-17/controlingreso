@@ -18,12 +18,13 @@ class EmployeeImport implements ToModel, WithHeadingRow, WithBatchInserts
     public function model(array $row)
     {
         $date = Carbon::now('America/Bogota');
-
         return new Employee([
             'identification' => $row['identificacion'],
             'fullname' => $row['nombre'],
             'area' => $row['area'],
             'site' => $row['sede'],
+            'email' => $row['correo_electronico'],
+            'nickname' => $row['apodo'],
             'created_at' => $date,
             'update_at' => $date
         ]);

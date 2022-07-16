@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
+use App\Imports\EmployeeImport;
 use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::resource('/employees', EmployeeController::class)->middleware('auth');
 Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirmdelete'])->name('confirmdelete')->middleware('auth');
 Route::get('/employees/import/view', [EmployeeController::class, 'import_view'])->middleware('auth');
 Route::post('/employees/import/excel', [EmployeeController::class, 'import_excel'])->name('import_excel')->middleware('auth');
+Route::get('/employees/import/view/download', [EmployeeController::class, 'download_import_format'])->name('download_import')->middleware('auth');
 
 
 //Register

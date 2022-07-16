@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Auth\Access\Response;
 
 class EmployeeController extends Controller
 {
@@ -213,6 +214,12 @@ class EmployeeController extends Controller
         }
 
 
+    }
+
+    public function download_import_format()
+    {
+        $file= public_path()."\assets\downloads\importFormat.xlsx";
+        return response()->download($file);
     }
 
 
