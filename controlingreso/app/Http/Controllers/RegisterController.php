@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailNotification;
 use App\Mail\ControlIngresoAA;
 use App\Models\Employee;
 use App\Models\Report;
@@ -42,12 +43,11 @@ class RegisterController extends Controller
         $ConvertCurrent = date('Y-m-j');
 
         //Buscar reportes relacionado con empleado
-        
-        $searches = Report::where('identification', $identification)->orderBy('id', 'asc')->get();      
-        
+
+        $searches = Report::where('identification', $identification)->orderBy('id', 'asc')->get();
+
         //Si no existe reporte relacionado
-        if( (sizeof($searches)) == 0 ) 
-        {
+        if ((sizeof($searches)) == 0) {
             foreach ($employees as $Register) {
                 DB::table('reports')
                     ->insert([
@@ -64,15 +64,15 @@ class RegisterController extends Controller
             return redirect('/register');
         }
         //Si existe algún reporte = update
-        else
-        {
+        else {
             foreach ($searches as $search) {
                 $created = $search->created_at;
             }
 
             $fecha = date_format($created, 'Y-m-j');
 
-            if ($fecha == $ConvertCurrent) {
+            if ($fecha == $ConvertCurrent) 
+            {
 
                 $exit = date('Y-m-j H:i:s');
 
@@ -91,8 +91,27 @@ class RegisterController extends Controller
                 $interval = $entryDiff->diff($exitDiff);
                 $diff = $interval->format('%h:%i:%s');;
                 $UpdateReport->stay = $diff;
-                
+
                 $UpdateReport->save();
+
+                try
+                {
+                    $email = $UpdateReport->email;
+                    $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
+
+                    //Enviar correo de forma sincronica
+                    // Mail::to($email)->send(new ControlIngresoAA($report));
+                    
+                    //Enviar correo de forma asincrona
+                    SendEmailNotification::dispatch($report);
+
+                    return redirect('/register');
+
+                }
+                catch (\Throwable $th)
+                {
+                    return redirect('/register');
+                }
 
                 return redirect('/register');
             } 
@@ -114,25 +133,5 @@ class RegisterController extends Controller
                 return redirect('/register');
             }
         }
-
-
-
-        //$validate = Report::where('identification', $identification)->between();
-
-
-        // try
-        // {
-        //     // $email = $Register->email;
-        //     // $report = Report::where($request->identification)->orderBy('id', 'desc')->first();
-
-        //     // Mail::to($email)->send(new ControlIngresoAA($report));
-        //     return redirect('/register');
-
-        // }
-        // catch (\Throwable $th)
-        // {
-        //     return redirect('/register');
-        // }
-
     }
 }

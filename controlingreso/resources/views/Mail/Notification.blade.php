@@ -16,7 +16,7 @@
                     <img class="img-fluid" style="display:block" width="130" src="{{ asset('assets/Images/LogoA.png') }}">
                     <h2 style="color: #e67e22; margin: 0 0 7px">Hola {{ $reports->nickname }} !!</h2>
                     <p style="margin: 2px; font-size: 15px">
-                        Tienes una nueva notificación de acceso, te dejaremos los datos a continuación, que tengas un excelente día.
+                        Tienes una nueva notificación del control de ingreso AA, te dejaremos los datos a continuación, que tengas un excelente día.
                     </p>
                     <p>
                         Recuerda que si necesitas un reporte más completo lo puedes solicitar desde nuestra mesa de ayuda (Botón azul).
@@ -26,7 +26,9 @@
                             <li>Identificación: {{ $reports->identification }}</li>
                             <li>Área: {{ $reports->area }}</li>
                             <li>Sede: {{ $reports->site }}</li>
-                            <li>Fecha y hora de ingreso: {{ $reports->created_at }}</li>
+                            <li>Ingreso: {{ $reports->created_at }}</li>
+                            <li>Salida: {{ $reports->updated_at }}</li>
+                            <li>Estadía: {{ $reports->stay }}</li>
                         </ul>
                     </div>
                 

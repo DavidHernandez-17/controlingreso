@@ -17,6 +17,7 @@ class ControlIngresoAA extends Mailable
      *
      * @return void
      */
+    
     public $reports;
 
     public function __construct(Report $reports)

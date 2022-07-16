@@ -26,7 +26,7 @@
             </th>
             <tr>
                 <th class="text-center">Cédula</th>
-                <th class="text-center">Nombre completo</th>
+                <th class="text-center">Nombre</th>
                 <th class="text-center">Área</th>
                 <th class="text-center">Sede</th>
                 <th class="text-center">Correo electrónico</th>
