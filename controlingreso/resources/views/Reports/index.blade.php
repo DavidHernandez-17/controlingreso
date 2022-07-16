@@ -30,8 +30,9 @@
                 <th class="text-center">Área</th>
                 <th class="text-center">Sede</th>
                 <th class="text-center">Correo electrónico</th>
-                <th class="text-center">Registro de ingreso</th>
-                <th class="text-center">Registro de salida</th>
+                <th class="text-center">Ingreso</th>
+                <th class="text-center">Salida</th>
+                <th class="text-center">Estadía</th>
             </tr>
         </thead>
 
@@ -45,6 +46,7 @@
                 <td> {{ $Report->email }} </td>
                 <td> {{ $Report->created_at }} </td>
                 <td> {{ $Report->updated_at }} </td>
+                <td> {{ $Report->stay }} </td>
             </tr>
             @endforeach
         </tbody>

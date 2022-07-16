@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->string('site');
             $table->string('email');
             $table->string('nickname');
+            $table->string('stay')->nullable();
             $table->timestamps();
         });
     }

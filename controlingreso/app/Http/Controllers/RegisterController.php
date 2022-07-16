@@ -6,7 +6,9 @@ use App\Mail\ControlIngresoAA;
 use App\Models\Employee;
 use App\Models\Report;
 use Carbon\Carbon;
+use DateTime;
 use Exception;
+use Faker\Provider\cs_CZ\DateTime as Cs_CZDateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -31,7 +33,7 @@ class RegisterController extends Controller
         $employees = Employee::Where('identification', $identification)->get();
 
         //Define zona horaria
-        date_default_timezone_set("America/Bogota");
+        $tz = date_default_timezone_set("America/Bogota");
         //Hora y fecha actual
         $date = getDate();
         //Conversión fecha y hora actual
@@ -43,7 +45,7 @@ class RegisterController extends Controller
         
         $searches = Report::where('identification', $identification)->orderBy('id', 'asc')->get();      
         
-        //Si existe algún reporte
+        //Si no existe reporte relacionado
         if( (sizeof($searches)) == 0 ) 
         {
             foreach ($employees as $Register) {
@@ -61,7 +63,7 @@ class RegisterController extends Controller
 
             return redirect('/register');
         }
-        //Si no existe algún reporte
+        //Si existe algún reporte = update
         else
         {
             foreach ($searches as $search) {
@@ -79,8 +81,17 @@ class RegisterController extends Controller
                     $id = $search2->id;
                 }
 
+                //Registro Salida
                 $UpdateReport = Report::find($id);
                 $UpdateReport->updated_at = $exit;
+
+                //Método para stay
+                $entryDiff = new DateTime($created);
+                $exitDiff = new DateTime($exit);
+                $interval = $entryDiff->diff($exitDiff);
+                $diff = $interval->format('%h:%i:%s');;
+                $UpdateReport->stay = $diff;
+                
                 $UpdateReport->save();
 
                 return redirect('/register');
