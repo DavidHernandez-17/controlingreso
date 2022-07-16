@@ -58,13 +58,13 @@ class UserController extends Controller
             'area' => 'required'
         ],[
             'name.required' => 'El nombre es obligatorio',
-            'name.min' => 'El usuario debe contener mínimo 5 caracteres',
+            'name.min' => 'El nombre debe contener mínimo 5 caracteres',
             'email.required' => 'El correo electrónico es requerido',
             'email.unique' => 'El correo electrónico ya existe, inténtelo de nuevo',
             'password.required' => 'La contraseña es obligatoria',
             'password.min' => 'La clave debe contener mínimo 6 caracteres',
             'role.required' => 'El rol es obligatorio',
-            'area.required' => 'El campo área es obligatoria'
+            'area.required' => 'El área es obligatoria'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -125,6 +125,14 @@ class UserController extends Controller
             'email' => 'required|min:3',
             'role' => 'required',
             'area' => 'required'
+        ],[
+            'name.required' => 'El nombre es obligatorio',
+            'name.min' => 'El nombre debe contener mínimo 5 caracteres',
+            'email.required' => 'El correo electrónico es requerido',
+            'password.required' => 'La contraseña es obligatoria',
+            'password.min' => 'La clave debe contener mínimo 6 caracteres',
+            'role.required' => 'El rol es obligatorio',
+            'area.required' => 'El área es obligatoria'
         ]);
 
         $date = Carbon::now('America/Bogota');

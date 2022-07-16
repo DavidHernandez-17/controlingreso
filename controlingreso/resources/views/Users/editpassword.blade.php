@@ -19,7 +19,7 @@
                         </ul>
                     </div>
                     @endif
-
+                    
                     @if( isset($Message) )
                         <li class="alert alert-danger mt-3">{{ $Message }}</li>
                     @endif
@@ -31,11 +31,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="text-primary">Contraseña</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="*******">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="*******" required>
                             </div>
                             <div class="form-group">
                                 <label class="text-primary">Confirmar contraseña</label>
-                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="*******">
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="*******" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Cambiar</button>

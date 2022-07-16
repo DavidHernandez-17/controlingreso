@@ -51,12 +51,25 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate([
-            'identification' => 'required|min:3|unique:employees,identification'.$request->id,
-            'fullname' => 'required|min:2',
-            'area' => 'required|min:2',
+            'identification' => 'required|min:4|unique:employees,identification'.$request->id,
+            'fullname' => 'required|min:6',
+            'area' => 'required|min:3',
             'site' => 'required|min:2',
             'email' => 'required',
-            'nickname' => 'required|min:2'
+            'nickname' => 'required|min:3'
+        ],[
+            'identification.required' => 'La identificación es obligatoria.',
+            'identification.unique' => 'La identificación ya existe, inténtelo de nuevo',
+            'identification.min' => 'La identificación debe contener mínimo 4 dígitos.',
+            'fullname.required' => 'El nombre es obligatorio.',
+            'fullname.min' => 'El nombre debe contener mínimo 6 dígitos.',
+            'area.required' => 'El área es obligatoria.',
+            'area.min' => 'El área debe contener mínimo 3 dígitos.',
+            'site.required' => 'La sede es obligatoria.',
+            'site.min' => 'La sede debe contener mínimo 2 dígitos.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'nickname.required' => 'El apodo es obligatorio.',
+            'nickname.min' => 'El apodo debe contener mínimo 3 dígitos.'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -72,7 +85,7 @@ class EmployeeController extends Controller
         $employee->updated_at = $date;
         $employee->save();
         
-        return redirect('/employees');
+        return redirect('/employees')->with('info', 'El colaborador fue creado correctamente');
     }
 
     /**
@@ -113,10 +126,22 @@ class EmployeeController extends Controller
         $validData = $request->validate([
             'identification' => 'required|min:3',
             'fullname' => 'required|min:2',
-            'area' => 'required|min:2',
+            'area' => 'required|min:3',
             'site' => 'required|min:2',
             'email' => 'required',
-            'nickname' => 'required|min:2'            
+            'nickname' => 'required|min:3'            
+        ],[
+            'identification.required' => 'La identificación es obligatoria.',
+            'identification.min' => 'La identificación debe contener mínimo 4 dígitos.',
+            'fullname.required' => 'El nombre es obligatorio.',
+            'fullname.min' => 'El nombre debe contener mínimo 6 dígitos.',
+            'area.required' => 'El área es obligatoria.',
+            'area.min' => 'El área debe contener mínimo 3 dígitos.',
+            'site.required' => 'La sede es obligatoria.',
+            'site.min' => 'La sede debe contener mínimo 2 dígitos.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'nickname.required' => 'El apodo es obligatorio.',
+            'nickname.min' => 'El apodo debe contener mínimo 3 dígitos.'
         ]);
 
         $date = Carbon::now('America/Bogota');
@@ -132,7 +157,7 @@ class EmployeeController extends Controller
         $employee->updated_at = $date;
 
         $employee->save();
-        return redirect('/employees');       
+        return redirect('/employees')->with('info', 'El colaborador fue actualizado correctamente');       
 
     }
 
@@ -159,7 +184,7 @@ class EmployeeController extends Controller
 
         $Employee->delete();
 
-        return redirect('/employees');
+        return redirect('/employees')->with('info', 'El colaborador fue eliminado correctamente');
 
     }
 

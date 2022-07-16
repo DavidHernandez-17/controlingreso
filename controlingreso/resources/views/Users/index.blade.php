@@ -7,7 +7,7 @@
     </div>
 
     @if(session('info'))
-        <div class="alert alert-success">{{ session('info') }}</div>
+        <li class="alert alert-success">{{ session('info') }}</li>
     @endif
 
 
