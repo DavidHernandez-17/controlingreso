@@ -18,7 +18,7 @@
     <title>Control de Ingreso</title>
 </head>
 
-<body class="hold-transition layout-top-nav bg-light">
+<body class="hold-transition layout-top-nav bg-light sidebar-mini">
 
     @if( Auth::check() )
     <div class="wrapper">
@@ -26,7 +26,7 @@
             <div class="container-fluid">
                 <div>
                     <img src="{{ asset('assets/Images/LogoA.png') }}" alt="AlbertoAlvarez Logo" class="brand-image img-circle elevation-4" style="opacity: .7;">
-                    <span class="brand-text text-secondary font-weight-light">Control de ingreso</span> | 
+                    <span class="brand-text text-secondary font-weight-light">Control de ingreso</span> |
                     <span class="brand-text text-primary font-weight-light">{{ Auth::user()->area }}</span>
                 </div>
 
@@ -72,8 +72,19 @@
         @yield('content')
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
+<!--
+<div class="card">
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>Version</b> 3.2.0
+        </div>
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
+</div>
+-->
 
 </html>
