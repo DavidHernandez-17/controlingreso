@@ -21,7 +21,7 @@
         <!--card-header -->
         <div class="card-body">
             <table id="tableemployee" class="table table-bordered  text-center">
-                <thead style="background-color: #1673DD;" class="text-light">
+                <thead style="background-color: #007eff;" class="text-light">
                     <tr>
                         <th>Cédula</th>
                         <th>Nombre completo</th>

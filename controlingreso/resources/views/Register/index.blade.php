@@ -7,7 +7,7 @@
 ?>
 
 <div class="mt-3">
-    <div class="d-flex" style="height: 100px;">
+    <div class="d-flex" style="height: 125px;">
         <div class="vr"></div>
     </div>
 

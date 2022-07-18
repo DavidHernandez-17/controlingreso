@@ -2,16 +2,16 @@
 
 @section('content')
 
-<div class="login-box container mt-5">
+<div class="login-box container">
     <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
+    
+    <div class="card card-outline card-primary" style="margin-top: 90px">
         <div class="card-header text-center">
-            <img class="img-fluid" width="130" src="{{ asset('assets/Images/logo.png') }}">
+            <img class="img-fluid" width="300" src="{{ asset('assets/Images/logo.png') }}">
         </div>
         <div class="card-body">
             <h5 class="text-center">Inicio de sesión</h5>
-            <p class="login-box-msg">Control de ingreso Alberto Álvarez S S.A</p>
-
+            
             @if($errors->any())
             <div class="alert alert-danger">
                 <ul>

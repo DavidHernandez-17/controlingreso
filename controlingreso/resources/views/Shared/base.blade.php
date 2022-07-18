@@ -14,7 +14,6 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
     <title>Control de Ingreso</title>
 </head>
 
@@ -25,30 +24,31 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container-fluid">
                 <div>
-                    <img src="{{ asset('assets/Images/LogoA.png') }}" alt="AlbertoAlvarez Logo" class="brand-image img-circle elevation-4" style="opacity: .7;">
-                    <span class="brand-text text-secondary font-weight-light">Control de ingreso</span> |
-                    <span class="brand-text text-primary font-weight-light">{{ Auth::user()->area }}</span>
+                    <a href="{{ route('reports') }}"><img src="{{ asset('assets/Images/logo.png') }}" class="brand-image" width="auto"></a>
+                    <small><i class="fa-solid fa-wifi text-primary"></i></small>
+                    <span class="brand-text text-primary font-weight-light"><small> {{ Auth::user()->area }}</small></span>
                 </div>
 
-                <center>
+                <div class="justify-text-left">
                     <div class="collapse navbar-collapse nav float-center" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ">
+                        <div class="navbar-nav">
                             @can('register.index')
                             <div class="dropdown">
                                 <a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-gear"></i> Administración
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a></li>
+                                <li><a class="dropdown-item" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a></li>
                                     <li><a class="dropdown-item disabled" href="#"><i class="fa-solid fa-calendar-days"></i> Control asistencia</a></li>
-                                    <li><a class="dropdown-item" href="/register"><i class="fa-solid fa-id-card"></i> Registro</a></li>
-                                    <li><a class="dropdown-item" href="/users"><i class="fa-solid fa-user-check"></i> Usuarios</a></li>
+                                    <li><a class="dropdown-item disabled" href="#"><i class="fa-solid fa-person-circle-question"></i> Registro invitados</a></li>
                                 </ul>
                             </div>
 
                             @endcan
 
-                            <a class="nav-link active text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
-                            <a class="nav-link active text-secondary" href="/reports"><i class="fa-solid fa-calendar-check"></i> Reportes</a>
+                            <a class="nav-link text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
+                            <a class="nav-link text-secondary" href="/reports"><i class="fa-solid fa-calendar-check"></i> Reportes</a>
 
                             <div class="dropdown">
                                 <a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +61,7 @@
 
                         </div>
                     </div>
-                </center>
+                </div>
 
             </div>
         </nav>

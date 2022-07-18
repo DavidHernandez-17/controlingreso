@@ -1,0 +1,14 @@
+
+
+.menu .a .li .active{
+    color: #304ffe;
+    border-bottom: 5px solid #304ffe;
+    width: 100%;
+    border-radius: 1px;
+    transition: 0.5s ease;
+    display: inline-block;
+}
+
+.menu .li :hover{
+    color: #304ffe;
+}

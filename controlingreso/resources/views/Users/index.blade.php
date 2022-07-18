@@ -20,7 +20,7 @@
         <!--card-header -->
         <div class="card-body">
             <table id="tableusers" class="table table-bordered  text-center">
-                <thead style="background-color: #1673DD;" class="text-light">
+                <thead style="background-color: #007eff;" class="text-light">
                     <tr>
                         <th class="text-center">Nombre</th>
                         <th class="text-center">Correo electrónico</th>

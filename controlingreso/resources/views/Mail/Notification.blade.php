@@ -13,7 +13,7 @@
         <tr>
             <td style="background-color: #ecf0f1">
                 <div style="color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
-                    <img class="img-fluid" style="display:block" width="130" src="{{ asset('assets/Images/LogoA.png') }}">
+                    <img class="img-fluid" style="display:block" width="130" src="{{ asset('assets/Images/logo.png') }}">
                     <h2 style="color: #e67e22; margin: 0 0 7px">Hola {{ $reports->nickname }} !!</h2>
                     <p style="margin: 2px; font-size: 15px">
                         Tienes una nueva notificación del control de ingreso AA, te dejaremos los datos a continuación, que tengas un excelente día.
