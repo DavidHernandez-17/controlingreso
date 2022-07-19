@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\AreaMaster;
+use App\Models\SiteMaster;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            UserTableSeeder::class
+            UserTableSeeder::class,
+            AreaMasterSeeder::class,
+            SiteMasterSeeder::class
         ]);
     }
 }

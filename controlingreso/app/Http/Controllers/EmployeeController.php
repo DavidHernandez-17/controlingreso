@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Imports\EmployeeImport;
+use App\Models\AreaMaster;
 use App\Models\Employee;
+use App\Models\MDM;
+use App\Models\SiteMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -40,7 +44,14 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('Employees.create');
+        return view('Employees.create', [
+            'areas' => DB::table('area_masters')
+                    ->orderBy('area', 'ASC')
+                    ->get(),
+            'sites' => DB::table('site_masters')
+                    ->orderBy('site', 'ASC')
+                    ->get()
+        ]);
     }
 
     /**
