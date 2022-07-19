@@ -9,7 +9,7 @@
         @endcan
         @can('reports.indexAll')
         <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('reports-all') }}"></i>
-            <i class="fa-solid fa-eye"></i>Todos los reportes</a>
+            <i class="fa-solid fa-eye"></i> Todos los reportes</a>
         @endcan
     @endif
     @if( Route::currentRouteName() == "reports-all")
