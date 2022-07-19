@@ -29,10 +29,12 @@ Route::get('/', [LoginController::class, 'index']);
 
 //Employees
 Route::resource('/employees', EmployeeController::class)->middleware('auth')->names([
-    'index' => 'employees'
+    'index' => 'employees',
+    'create' => 'employees-create',
+    'edit' => 'employees-edit'
 ]);
-Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirmdelete'])->name('confirmdelete')->middleware('auth');
-Route::get('/employees/import/view', [EmployeeController::class, 'import_view'])->middleware('auth');
+Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirmdelete'])->name('employee-confirmdelete')->middleware('auth');
+Route::get('/employees/import/view', [EmployeeController::class, 'import_view'])->name('employee-import')->middleware('auth');
 Route::post('/employees/import/excel', [EmployeeController::class, 'import_excel'])->name('import_excel')->middleware('auth');
 Route::get('/employees/import/view/download', [EmployeeController::class, 'download_import_format'])->name('download_import')->middleware('auth');
 
@@ -44,9 +46,9 @@ Route::post('/register/done', [RegisterController::class, 'register'])->middlewa
 
 //Reports
 Route::get('/reports', [ReportController::class, 'index'])->name('reports')->middleware('auth');
-Route::get('/reports/all', [ReportController::class, 'indexAll'])->name('indexAll')->middleware('auth');
-Route::get('/reports/export/excel', [ReportController::class, 'export'])->name('export')->middleware('auth');
-Route::get('/reports/export/excel/all', [ReportController::class, 'exportAll'])->name('exportAll')->middleware('auth');
+Route::get('/reports/all', [ReportController::class, 'indexAll'])->name('reports-all')->middleware('auth');
+Route::get('/reports/export/excel', [ReportController::class, 'export'])->name('reports-export')->middleware('auth');
+Route::get('/reports/export/excel/all', [ReportController::class, 'exportAll'])->name('reports-exportAll')->middleware('auth');
 
 
 // Auth::routes();
@@ -55,7 +57,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Users
 Route::resource('/users', UserController::class)->middleware('auth')->names([
-    'index' => 'users'
+    'index' => 'users',
+    'create' => 'users-create',
+    'edit' => 'users-edit'
 ]);
 Route::get('/users/{id}/confirmdelete', [UserController::class, 'confirmdelete'])->name('confirmdelete')->middleware('auth');
 Route::get('/users/{id}/edit/password', [UserController::class, 'edit_password'])->name('edit_password');

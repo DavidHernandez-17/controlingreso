@@ -3,18 +3,27 @@
 @section('content')
 
 <div class="container">
-    @can('reports.index')
-    <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="{{ route('export') }}"><i class="fa-solid fa-download"></i> Exportar</a>
-    @endcan
-    @can('reports.indexAll')
-    <a class="btn mt-3 mb-3 text-light btn-sm btn-secondary" href="{{ route('exportAll') }}"><i class="fa-solid fa-download"></i> Exportar Todos los registros</a>
-    @endcan
-    @can('reports.indexAll')
-    <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('indexAll') }}"></i>
-        <i class="fa-solid fa-eye"></i>Todos los reportes</a>
-    @endcan
+    @if( Route::currentRouteName() == "reports" )
+        @can('reports.index')
+            <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="{{ route('reports-export') }}"><i class="fa-solid fa-download"></i> Exportar {{Auth::user()->area}}</a>
+        @endcan
+        @can('reports.indexAll')
+        <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('reports-all') }}"></i>
+            <i class="fa-solid fa-eye"></i>Todos los reportes</a>
+        @endcan
+    @endif
+    @if( Route::currentRouteName() == "reports-all")
+        @can('reports.indexAll')
+            <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="{{ route('reports-exportAll') }}"><i class="fa-solid fa-download"></i> Exportar todos los registros</a>
+        @endcan
+        @can('reports.indexAll')
+            <a class="btn mt-3 mb-3 text-light btn-primary btn-sm" href="{{ route('reports') }}"></i>
+                <i class="fa-solid fa-eye"></i> Reportes {{ Auth::user()->area }}</a>
+        @endcan
+    @endif
+    
     @if( isset($Message) )
-    <li class="alert alert-success">{{ $Message }}</li>
+        <li class="alert alert-success">{{ $Message }}</li>
     @endif
 
 </div>

@@ -24,9 +24,9 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container-fluid">
                 <div>
-                    <a href="{{ route('reports') }}"><img src="{{ asset('assets/Images/logo.png') }}" class="brand-image" width="auto"></a>
+                    <img src="{{ asset('assets/Images/logo.png') }}" class="brand-image" width="auto">
                     <small><i class="fa-solid fa-wifi text-primary"></i></small>
-                    <span class="brand-text text-primary font-weight-light"><small> {{ Auth::user()->area }}</small></span>
+                    <a href="{{ route('reports') }}"><span class="brand-text text-primary font-weight-light"><small> {{ Auth::user()->area }}</small></span></a>
                 </div>
 
                 <div class="justify-text-left">
@@ -35,7 +35,12 @@
 
                             @can('register.index')
                             <div class="dropdown">
-                                @if( Route::currentRouteName() == "register" || Route::currentRouteName() == "users")
+                                @if( Route::currentRouteName() == "register" 
+                                    || Route::currentRouteName() == "users"
+                                    || Route::currentRouteName() == "users-create"
+                                    || Route::currentRouteName() == "users-edit"
+                                    || Route::currentRouteName() == "edit_password"
+                                    || Route::currentRouteName() == "confirmdelete" )
                                 <a class="dropdown-toggle nav-link nav_active" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-gear"></i> Administración
                                 </a>
@@ -54,13 +59,19 @@
 
                             @endcan
                             
-                            @if( Route::currentRouteName() == 'employees')
+                            @if( Route::currentRouteName() == "employees"
+                                || Route::currentRouteName() == "employees-create" 
+                                || Route::currentRouteName() == "employees-edit"
+                                || Route::currentRouteName() == "employee-confirmdelete"
+                                || Route::currentRouteName() == "employee-import"
+                                || Route::currentRouteName() == "import_excel")
                                 <a class="nav-link text-secondary nav_active" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                             @else
                                 <a class="nav-link text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                             @endif
                             
-                            @if( Route::currentRouteName() == 'reports')
+                            @if( Route::currentRouteName() == "reports"
+                                || Route::currentRouteName() == "reports-all")
                                 <a class="nav-link text-secondary nav_active" href="/reports"><i class="fa-solid fa-calendar-check"></i> Reportes</a>
                             @else
                                 <a class="nav-link text-secondary" href="/reports"><i class="fa-solid fa-calendar-check"></i> Reportes</a>
