@@ -1,12 +1,7 @@
 @extends('Shared.base')
-
 @section('content')
-<div class="container">
-
-    @if( session('info') )
-    <li class="alert alert-success mt-3">{{ session('info') }}</li>
-    @endif
-
+    <div class="container">
+        <!-- Nueva tabla -->
 
     <div class="container">
         <a class="btn btn-primary mt-3 mb-3 btn-sm" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
@@ -14,10 +9,9 @@
         <a class="btn mt-3 mb-3 btn-sm btn-secondary" href="{{route('qr_index')}}"><i class="fa-solid fa-qrcode"></i> Generador QR</a>
     </div>
 
-    <!-- Nueva tabla -->
     <div class="card text-center">
         <div class="card-header">
-            <h3 class="card-title"><i class="fa-solid fa-user-gear"></i><strong> Colaboradores </strong></h3>
+            <h3 class="card-title"><i class="fa-solid fa-user-gear"></i><strong>Listado de Qr Colaboradores </strong></h3>
         </div>
         <!--card-header -->
         <div class="card-body">
@@ -29,7 +23,7 @@
                         <th>Área</th>
                         <th>Sede</th>
                         <th>Fecha de actualización</th>
-                        <th>Acciones</th>
+                        <th>Imagen QR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,12 +35,7 @@
                         <td> {{ $Employee->site }} </td>
                         <td> {{ $Employee->updated_at }} </td>
                         <td>
-                            <a class="btn btn-outline-secondary btn-sm" href="/employees/{{ $Employee->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
-
-                            @can('employees.delete')
-                            <a class="btn btn-outline-danger btn-sm" href="/employees/{{ $Employee->id }}/confirmdelete"><i class="fa-solid fa-circle-minus"></i></a>
-                            @endcan
-
+                            <img src="" alt="">
                         </td>
                     </tr>
                     @endforeach
@@ -54,6 +43,8 @@
             </table>
         </div>
     </div>
+    </div>
+
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <script>
         $(function() {
@@ -67,5 +58,4 @@
             });
         });
     </script>
-
-    @endsection
+@endsection

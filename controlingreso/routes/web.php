@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\QR\QrController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
@@ -37,6 +38,7 @@ Route::get('/employees/{id}/confirmdelete', [EmployeeController::class, 'confirm
 Route::get('/employees/import/view', [EmployeeController::class, 'import_view'])->name('employee-import')->middleware('auth');
 Route::post('/employees/import/excel', [EmployeeController::class, 'import_excel'])->name('import_excel')->middleware('auth');
 Route::get('/employees/import/view/download', [EmployeeController::class, 'download_import_format'])->name('download_import')->middleware('auth');
+Route::get('/employees/generador/qr', [QrController::class, 'index'])->name('qr_index')->middleware('auth');
 
 
 //Register
@@ -71,3 +73,6 @@ Route::post('/auth/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/forgot-password', [LoginController::class, 'forgot'])->name('forgot-password');
 Route::post('/forgot-confirm', [LoginController::class, 'forgot_confirm'])->name('forgot-confirm');
+
+
+
