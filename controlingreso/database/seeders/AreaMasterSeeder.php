@@ -58,7 +58,7 @@ class AreaMasterSeeder extends Seeder
 
 
         foreach ($areas as $area) {
-            $MDMCreated = AreaMaster::create($area);
+            AreaMaster::create($area);
         }
         
     }

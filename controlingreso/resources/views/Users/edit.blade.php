@@ -44,7 +44,9 @@
                             <div class="form-group">
                                 <label class="text-primary">Rol</label>
                                 <select name="role" id="role" class="form-control">
-                                    <option value="{{ $User->roles[0]['name'] }}">{{ $User->roles[0]['name'] }}</option>
+
+                                    <option value="">Rol</option>
+
                                     @foreach( $Roles as $Role )
                                         <option value="{{ $Role->id }}">{{ $Role->name }}</option>
                                     @endforeach
