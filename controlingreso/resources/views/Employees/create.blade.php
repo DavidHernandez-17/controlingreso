@@ -32,7 +32,7 @@
 
                             <div class="form-group">
                                 <select name="area" id="area" class="form-control text-secondary">
-                                    <option value="">-- Selecciona una área --</option>
+                                    <option value="">Área</option>
                                     @foreach( $areas as $area )
                                         <option value="{{ $area->area }}">{{ $area->area }}</option>
                                     @endforeach
@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <select name="site" id="site" class="form-control text-secondary">
-                                    <option value="">-- Selecciona una sede --</option>
+                                    <option value="">Sede</option>
                                     @foreach( $sites as $site )
                                         <option value="{{ $site->site }}">{{ $site->site }}</option>
                                     @endforeach

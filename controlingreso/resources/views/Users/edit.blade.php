@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-primary">Área</label>
-                                <select name="area" id="area" class="form-control text-secondary">
+                                <select name="area" id="area" class="form-control">
                                     <option value="{{ $AreaUser }}">{{ $AreaUser }}</option>
                                     @foreach( $Areas as $Area )
                                         <option value="{{ $Area->area }}">{{ $Area->area }}</option>
@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label class="text-primary">Rol</label>
                                 <select name="role" id="role" class="form-control">
-                                    <option value="">-- Selecciona un rol --</option>
+                                    <option value="{{ $User->roles[0]['name'] }}">{{ $User->roles[0]['name'] }}</option>
                                     @foreach( $Roles as $Role )
                                         <option value="{{ $Role->id }}">{{ $Role->name }}</option>
                                     @endforeach

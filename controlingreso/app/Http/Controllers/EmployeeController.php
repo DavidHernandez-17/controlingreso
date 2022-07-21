@@ -89,8 +89,8 @@ class EmployeeController extends Controller
         $employee = new Employee();
         $employee->identification = $request->get('identification');
         $employee->fullname = $request->get('fullname');
-        $employee->area = strtoupper($request->get('area'));  
-        $employee->site = strtoupper($request->get('site'));
+        $employee->area = $request->get('area');  
+        $employee->site = $request->get('site');
         $employee->email = $request->get('email');
         $employee->nickname = $request->get('nickname');
         $employee->created_at = $date;
@@ -169,8 +169,8 @@ class EmployeeController extends Controller
         $employee = employee::findOrfail($id);
         $employee->identification = $request->get('identification');
         $employee->fullname = $request->get('fullname');
-        $employee->area = strtoupper($request->get('area'));  
-        $employee->site = strtoupper($request->get('site'));
+        $employee->area = $request->get('area');  
+        $employee->site = $request->get('site');
         $employee->email = $request->get('email');
         $employee->nickname = $request->get('nickname');
         $employee->created_at = $date;
@@ -217,7 +217,7 @@ class EmployeeController extends Controller
     public function import_excel(Request $request)
     {
 
-        $file = $request->file('import_file');
+        $file = $request->file('import_file.xlsx');
         
         try
         {

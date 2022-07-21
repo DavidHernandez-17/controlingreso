@@ -5,7 +5,7 @@
 <div class="login-box container">
     <!-- /.login-logo -->
     
-    <div class="card card-outline card-primary" style="margin-top: 90px">
+    <div class="card card-outline card-primary" style="margin-top: 35%">
         <div class="card-header text-center">
             <img class="img-fluid" width="300" src="{{ asset('assets/Images/logo.png') }}">
         </div>

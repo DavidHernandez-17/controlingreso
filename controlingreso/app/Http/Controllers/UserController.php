@@ -80,7 +80,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('password'));
         $user->created_at = $date;
         $user->updated_at = $date;
-        $user->area = strtoupper($request->get('area'));
+        $user->area = $request->get('area');
         $user->assignRole($request->role);
         $user->save();  
 
@@ -151,7 +151,7 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $user->name = $request->get('name');
         $user->updated_at = $date;
-        $user->area = strtoupper($request->get('area'));
+        $user->area = $request->get('area');
         $user->roles()->sync($request->role);
         $user->save();
 
