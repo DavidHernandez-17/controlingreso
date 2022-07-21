@@ -6,7 +6,6 @@
     <div class="container">
         <a class="btn btn-primary mt-3 mb-3 btn-sm" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
         <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
-        <a class="btn mt-3 mb-3 btn-sm btn-secondary" href="{{route('qr_index')}}"><i class="fa-solid fa-qrcode"></i> Generador QR</a>
     </div>
 
     <div class="card text-center">
@@ -35,7 +34,7 @@
                         <td> {{ $Employee->site }} </td>
                         <td> {{ $Employee->updated_at }} </td>
                         <td>
-                            <img src="" alt="">
+                            <img src="/storage/img/qrcode/{{$Employee->identification}}" alt="">
                         </td>
                     </tr>
                     @endforeach
