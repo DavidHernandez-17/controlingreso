@@ -20,6 +20,9 @@
 <body class="hold-transition layout-top-nav bg-light sidebar-mini">
 
     @if( Auth::check() )
+    <div id="contenedor_carga">
+        <div id="carga"></div>
+    </div>
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container-fluid">
@@ -100,6 +103,14 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.onload = function(){
+            var contenedor = document.getElementById('contenedor_carga');
+            
+            contenedor.style.visibility = 'hidden';
+            contenedor.style.opacity = '0';
+        }
+    </script>
 </body>
 
 

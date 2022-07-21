@@ -34,7 +34,7 @@
                         <td> {{ $Employee->site }} </td>
                         <td> {{ $Employee->updated_at }} </td>
                         <td>
-                            <img src="/storage/img/qrcode/{{$Employee->identification}}" alt="">
+                            <img src="/storage/img/qrcode/{{$Employee->identification}}.png" alt="">
                         </td>
                     </tr>
                     @endforeach

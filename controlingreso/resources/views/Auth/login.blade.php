@@ -1,10 +1,10 @@
 @extends('Shared.base')
 
 @section('content')
-
+<div id="contenedor_carga">  
+</div>
 <div class="login-box container">
-    <!-- /.login-logo -->
-    
+    <!-- /.login-logo -->    
     <div class="card card-outline card-primary" style="margin-top: 35%">
         <div class="card-header text-center">
             <img class="img-fluid" width="300" src="{{ asset('assets/Images/logo.png') }}">
@@ -72,5 +72,12 @@
     <!-- /.card -->
 </div>
 
-
+<script>
+    window.onload = function(){
+        var contenedor = document.getElementById('contenedor_carga');
+        
+        contenedor.style.visibility = 'hidden';
+        contenedor.style.opacity = '0';
+    }
+</script>
 @endsection
