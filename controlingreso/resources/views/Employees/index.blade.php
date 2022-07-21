@@ -11,6 +11,7 @@
     <div class="container">
         <a class="btn btn-primary mt-3 mb-3 btn-sm" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
         <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
+        <a class="btn mt-3 mb-3 btn-sm btn-secondary" href="#"><i class="fa-solid fa-qrcode"></i> Generador QR</a>
     </div>
 
     <!-- Nueva tabla -->

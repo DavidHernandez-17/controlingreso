@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AreaMaster;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -37,8 +38,12 @@ class UserController extends Controller
     public function create()
     {
         $Roles = Role::all();
+        
         return view('Users.create', [
-            'Roles' => $Roles
+            'Roles' => $Roles,
+            'Areas' => DB::table('area_masters')
+                    ->orderBy('area', 'ASC')
+                    ->get()
         ]);
     }
 
@@ -107,7 +112,13 @@ class UserController extends Controller
 
         return view('Users.edit', [
             'User' => $user,
-            'Roles' => $roles
+            'Roles' => $roles,
+            'Areas' => DB::table('area_masters')
+                    ->orderBy('area', 'ASC')
+                    ->get(),
+
+            'AreaUser' => $user->area
+            
         ]);
     }
 

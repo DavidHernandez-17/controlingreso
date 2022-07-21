@@ -34,11 +34,22 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-primary">Área</label>
-                                <input type="text" name="area" id="area" class="form-control" value="{{ $Employee->area }}" value="{{ old('area') }}">
-                            </div>
+                                <select name="area" id="area" class="form-control">
+                                    <option value="{{ $EmployeeArea }}">{{ $EmployeeArea }}</option>
+                                    @foreach( $areas as $area )
+                                        <option value="{{ $area->area }}">{{ $area->area }}</option>
+                                    @endforeach
+                                </select>
+                            </div>                            
+
                             <div class="form-group">
                                 <label class="text-primary">Sede</label>
-                                <input type="text" name="site" id="site" class="form-control" value="{{ $Employee->site }}" value="{{ old('site') }}">
+                                <select name="site" id="site" class="form-control">
+                                    <option value="{{ $EmployeeSite }}">{{ $EmployeeSite }}</option>
+                                    @foreach( $sites as $site )
+                                        <option value="{{ $site->site }}">{{ $site->site }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             @can('only.user')
                             <div class="form-group">

@@ -33,10 +33,15 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" value="{{ old('password') }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="area" id="area" class="form-control" placeholder="Área" value="{{ old('area') }}">
+                                <select name="area" id="area" class="form-control  text-secondary">
+                                    <option>-- Selecciona un área --</option>
+                                    @foreach( $Areas as $Area )
+                                        <option value="{{ $Area->area }}">{{ $Area->area }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <select name="role" id="role" class="form-control">
+                                <select name="role" id="role" class="form-control  text-secondary">
                                     <option value="">-- Selecciona un rol --</option>
                                     @foreach( $Roles as $Role )
                                         <option value="{{ $Role->id }}">{{ $Role->name }}</option>

@@ -122,7 +122,15 @@ class EmployeeController extends Controller
         $employee = Employee::findOrfail($id);
 
         return view('Employees.edit', [
-            'Employee' => $employee
+            'Employee' => $employee,
+            'areas' => DB::table('area_masters')
+                    ->orderBy('area', 'ASC')
+                    ->get(),
+            'sites' => DB::table('site_masters')
+                    ->orderBy('site', 'ASC')
+                    ->get(),
+            'EmployeeArea' => $employee->area,
+            'EmployeeSite' => $employee->site
         ]);
     }
 

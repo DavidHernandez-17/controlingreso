@@ -34,8 +34,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-primary">Área</label>
-                                <input type="text" name="area" id="area" class="form-control" value="{{ $User->area }}" value="{{ old('area') }}">
-                            </div>
+                                <select name="area" id="area" class="form-control text-secondary">
+                                    <option value="{{ $AreaUser }}">{{ $AreaUser }}</option>
+                                    @foreach( $Areas as $Area )
+                                        <option value="{{ $Area->area }}">{{ $Area->area }}</option>
+                                    @endforeach
+                                </select>
+                            </div> 
                             <div class="form-group">
                                 <label class="text-primary">Rol</label>
                                 <select name="role" id="role" class="form-control">
