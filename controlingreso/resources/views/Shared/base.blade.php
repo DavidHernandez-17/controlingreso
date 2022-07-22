@@ -23,8 +23,9 @@
     <div id="contenedor_carga">
         <div id="carga"></div>
     </div>
+    
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <nav class="main-header navbar navbar-expand navbar-light navbar-white">
             <div class="container-fluid">
                 <div>
                     <img src="{{ asset('assets/Images/logo.png') }}" class="brand-image" width="auto">
@@ -67,7 +68,8 @@
                                 || Route::currentRouteName() == "employees-edit"
                                 || Route::currentRouteName() == "employee-confirmdelete"
                                 || Route::currentRouteName() == "employee-import"
-                                || Route::currentRouteName() == "import_excel")
+                                || Route::currentRouteName() == "import_excel"
+                                || Route::currentRouteName() == "qr_index"  )
                                 <a class="nav-link text-secondary nav_active" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>
                             @else
                                 <a class="nav-link text-secondary" href="/employees"><i class="fa-solid fa-user-gear"></i> Colaboradores</a>

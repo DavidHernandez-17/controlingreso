@@ -4,13 +4,13 @@
         <!-- Nueva tabla -->
 
     <div class="container">
-        <a class="btn btn-primary mt-3 mb-3 btn-sm" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear colaborador</a>
+        <a class="btn btn-primary mt-3 mb-3 btn-sm" href="/employees/create"><i class="fa-solid fa-circle-plus"></i> Crear QR colaborador</a>
         <a class="btn mt-3 mb-3 text-light btn-sm" style="background-color: orange" href="/employees/import/view"><i class="fa-solid fa-upload"></i> Importar</a>
     </div>
 
     <div class="card text-center">
         <div class="card-header">
-            <h3 class="card-title"><i class="fa-solid fa-user-gear"></i><strong>Listado de Qr Colaboradores </strong></h3>
+            <h3 class="card-title"><i class="fa-solid fa-qrcode"></i></i><strong> Listado de Qr Colaboradores </strong></h3>
         </div>
         <!--card-header -->
         <div class="card-body">
@@ -19,9 +19,6 @@
                     <tr>
                         <th>Cédula</th>
                         <th>Nombre completo</th>
-                        <th>Área</th>
-                        <th>Sede</th>
-                        <th>Fecha de actualización</th>
                         <th>Imagen QR</th>
                     </tr>
                 </thead>
@@ -30,9 +27,6 @@
                     <tr>
                         <td> {{ $Employee->identification }} </td>
                         <td> {{ $Employee->fullname }} </td>
-                        <td> {{ $Employee->area }} </td>
-                        <td> {{ $Employee->site }} </td>
-                        <td> {{ $Employee->updated_at }} </td>
                         <td>
                             <img src="/storage/img/qrcode/{{$Employee->identification}}.png" alt="">
                         </td>

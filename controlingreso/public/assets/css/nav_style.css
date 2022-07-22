@@ -40,7 +40,7 @@
     margin: auto;
     -webkit-animation: girar 0.5s linear infinite;
     -o-animation: girar 0.5s linear infinite;
-    animation: girar 0.5 linear infinite;
+    animation: girar 0.5s linear infinite;
 }
 
 @keyframes girar{

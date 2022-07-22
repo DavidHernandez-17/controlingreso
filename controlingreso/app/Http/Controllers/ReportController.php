@@ -43,7 +43,7 @@ class ReportController extends Controller
         try 
         {
             $Report = Report::all();
-
+            
             return view('Reports.index', [
                 'Reports' => $Report
             ]);
