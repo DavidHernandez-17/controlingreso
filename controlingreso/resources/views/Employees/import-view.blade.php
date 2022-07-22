@@ -20,7 +20,7 @@
                     <div class="card-header">
                         <h4 class="card-title text-light"><i class="fa-solid fa-upload"></i> Importar archivo</h4>
                     </div>
-                    <form action="/employees/import/excel" method="POST" class="container" enctype="multipart/form-data">
+                    <form action="{{ route('import_excel') }}" method="POST" class="container" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             @if( isset($Error))
@@ -62,7 +62,7 @@
         <div class="col-6 col-sm-4 mt-3">
             <ol start="3">
                 <li>
-                    <h6>Los valores de Área y Sede deben estar en mayúscula <i class="fa-solid fa-database"></i></h6>
+                    <h6>El archivo debe ser de tipo .xlsx <i class="fa-solid fa-database"></i></h6>
                 </li>
                 <li>
                     <a href="{{ route('download_import') }}" class="text-dark"><i class="fa-solid fa-download"></i> Descargarformato.xlsx</a>

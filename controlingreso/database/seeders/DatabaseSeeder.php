@@ -24,13 +24,13 @@ class DatabaseSeeder extends Seeder
             SiteMasterSeeder::class
         ]);
 
-        Employee::factory()
-                ->count(1000)
-                ->create();
+        // Employee::factory()
+        //         ->count(1000)
+        //         ->create();
 
                 
-        Report::factory()
-            ->count(10000)
-            ->create();
+        // Report::factory()
+        //     ->count(25000)
+        //     ->create();
     }
 }

@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Imports\EmployeeImport;
-use App\Models\AreaMaster;
+use App\Imports\EmployeesImport;
 use App\Models\Employee;
-use App\Models\MDM;
-use App\Models\SiteMaster;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -216,17 +212,18 @@ class EmployeeController extends Controller
 
     public function import_excel(Request $request)
     {
-
-        $file = $request->file('import_file.xlsx');
-        
         try
         {
-            Excel::import(new EmployeeImport, $file);
+            $file = $request->file('import_file');
+        
+            Excel::import(new EmployeesImport, $file);
+        
             return redirect('/employees')->with('info', 'La importación se realizó correctamente.');
+
         } 
         catch ( \Throwable $th) 
         {
-            $error = 'La importación no se realizó correctamente, sigue las recomendaciones ubicadas en la parte inferior.';
+            $error = 'La importación no se realizó correctamente, sigue las recomendaciones ubicadas en la parte inferior o ponte en contacto con el administrador.';
             return view('Employees.import-view', [
                 'Error' => $error
             ]);

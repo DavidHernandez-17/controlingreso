@@ -54,18 +54,20 @@
             </table>
         </div>
     </div>
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <script>
-        $(function() {
-            $("#tableemployee").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
-            });
-        });
-    </script>
+</div>
 
-    @endsection
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<script>
+    $(function() {
+        $("#tableemployee").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+
+@endsection
