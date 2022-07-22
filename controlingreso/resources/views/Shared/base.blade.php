@@ -17,7 +17,7 @@
     <title>Control de Ingreso</title>
 </head>
 
-<body class="hold-transition layout-top-nav bg-light sidebar-mini">
+<body class="hold-transition layout-top-nav bg-light sidebar-mini layout-footer-fixed" style="display: flex; flex-direction: column; min-height:100vh;">
 
     @if( Auth::check() )
     <div id="contenedor_carga">
@@ -90,11 +90,9 @@
                                     <li><a class="dropdown-item btn btn-ou-dark" href="{{ route('logout') }}">Cerrar sesión</a></li>
                                 </ul>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </nav>
     </div>
@@ -103,6 +101,16 @@
     <div>
         @yield('content')
     </div>
+
+    @if( Auth::check() )
+    <footer class="main-footer" style="margin-top: auto;">
+        <div class="float-right d-none d-sm-block">
+        <b>Version</b> 2.0
+        </div>
+        <strong>Copyright &copy; 2022-2029 <a href="https://albertoalvarez.com" target="_blank">Alberto Álvarez S S.A</a>.</strong> Todos los derechos reservados
+    </footer>
+    @endif
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -114,17 +122,4 @@
         }
     </script>
 </body>
-
-
-<!--
-<div class="card">
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.2.0
-        </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer>
-</div>
--->
-
 </html>
