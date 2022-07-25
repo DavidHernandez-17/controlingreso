@@ -33,6 +33,7 @@
                             <div class="form-group">
                                 <select name="area" id="area" class="form-control text-secondary">
                                     <option value="">Área</option>
+                                    <option value="Otra">Otra</option>
                                     @foreach( $areas as $area )
                                         <option value="{{ $area->area }}">{{ $area->area }}</option>
                                     @endforeach
@@ -42,6 +43,7 @@
                             <div class="form-group">
                                 <select name="site" id="site" class="form-control text-secondary">
                                     <option value="">Sede</option>
+                                    <option value="Otra">Otra</option>
                                     @foreach( $sites as $site )
                                         <option value="{{ $site->site }}">{{ $site->site }}</option>
                                     @endforeach

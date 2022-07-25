@@ -63,7 +63,7 @@ class EmployeeController extends Controller
             'fullname' => 'required|min:6',
             'area' => 'required|min:3',
             'site' => 'required|min:2',
-            'email' => 'required',
+            'email' => 'required|unique:employees,email'.$request->id,
             'nickname' => 'required|min:3'
         ],[
             'identification.required' => 'La identificación es obligatoria.',
@@ -76,6 +76,7 @@ class EmployeeController extends Controller
             'site.required' => 'La sede es obligatoria.',
             'site.min' => 'La sede debe contener mínimo 2 dígitos.',
             'email.required' => 'El correo electrónico es obligatorio.',
+            'email.unique' => 'La correo electrónico ya existe, inténtelo de nuevo',
             'nickname.required' => 'El apodo es obligatorio.',
             'nickname.min' => 'El apodo debe contener mínimo 3 dígitos.'
         ]);
@@ -144,7 +145,7 @@ class EmployeeController extends Controller
             'fullname' => 'required|min:2',
             'area' => 'required|min:3',
             'site' => 'required|min:2',
-            'email' => 'required',
+            'email' => 'required|unique:employees,email'.$request->id,
             'nickname' => 'required|min:3'            
         ],[
             'identification.required' => 'La identificación es obligatoria.',
@@ -156,6 +157,7 @@ class EmployeeController extends Controller
             'site.required' => 'La sede es obligatoria.',
             'site.min' => 'La sede debe contener mínimo 2 dígitos.',
             'email.required' => 'El correo electrónico es obligatorio.',
+            'email.unique' => 'La correo electrónico ya existe, inténtelo de nuevo',
             'nickname.required' => 'El apodo es obligatorio.',
             'nickname.min' => 'El apodo debe contener mínimo 3 dígitos.'
         ]);
