@@ -28,7 +28,7 @@
                         <td> {{ $Employee->identification }} </td>
                         <td> {{ $Employee->fullname }} </td>
                         <td>
-                            <img src="/storage/img/qrcode/{{$Employee->identification}}.png" alt="">
+                            <img src="/storage/img/qrcode/{{$Employee->identification}}.png" style="width: 120px;">
                         </td>
                     </tr>
                     @endforeach
